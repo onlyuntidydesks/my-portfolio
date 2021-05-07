@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | Javascript Recipe: Partial Application with Iterators</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="javascript-recipe-currying-the-iterator">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+</style>
+
+<a class='prevnext-nav prev' href='../css-ruler/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../easily-split-videos-with-ffmpeg/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">Javascript Recipe: Partial Application with Iterators</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>I've read about partial application in Javascript many times, however the concept has always seemed academic and I've rarely applied it to my own code, until recently.</p>
+<p>For those who are  unfamiliar with the concept, I recommend <a href="http://raganwald.com/2013/03/07/currying-and-partial-application.html">this article</a> by Reginald Braithwaite on the subject. His definition of partial application is the most concise I've come across: </p>
+<blockquote>
+<p>“Partial application is the conversion of a polyadic function into a function taking fewer arguments by providing one or more arguments in advance.”</p>
+</blockquote>
+<p>What that means is, if you're writing a function that accepts multiple arguments, and your passing in the same argument multiple times, you can cut down on repetition by, well, "providing one or more of those arguments in advance". </p>
+<p>Let's take a simple example: </p>
+<pre><code class="language-javascript">function say(word, person){
+    return word+" "+person; 
+} 
+
+say('hello', 'Tom'); //returns "hello Tom"
+say('hello', 'Jim');  //returns "hello Jim" 
+say('hello', 'Bob');  //returns "hello Bob" </code></pre>
+<p>Using partial application, we can cut down on repetition be eliminating that first 'hello' argument. </p>
+<pre><code class="language-javascript">function say(word){
+    return function(person){
+        return word+" "+person; 
+    }
+}
+
+var sayHello = say('hello'); 
+
+sayHello('Tom');  //returns "hello Tom"
+sayHello('Jim');   //returns "hello Jim"
+sayHello('Bob');  //returns "hello Bob"</code></pre>
+<p>In this example, our <code>say()</code> function looks very different. Instead of accepting two arguments, it accepts just one, and instead of returning a string, it returns another function. The magic of partial application is that our new function <code>sayHello()</code> retains access to that outer <code>'hello'</code> argument. </p>
+<p>Using this technique, we can use our <code>say()</code> function to create multiple functions, like <code>sayGoodye()</code>: </p>
+<pre><code class="language-javascript">function say(word){
+    return function(person){
+        return word+" "+person; 
+    }
+}
+
+var sayHello = say('hello'); 
+
+sayHello('Tom');  //returns "hello Tom"
+sayHello('Jim');   //returns "hello Jim"
+sayHello('Bob');  //returns "hello Bob"
+
+var sayGoodbye = say('goodbye'); 
+
+sayGoodbye('my love');  //returns "goodbye my love"</code></pre>
+<h2>A Practical Application of Partial Application</h2>
+<p>The above example illustrates the point, but it doesn't really apply to real-world web development much. </p>
+<p>Let's take a more practical example: </p>
+<pre><code class="language-javascript">
+var i=0; 
+
+function iterate(){
+    i++; 
+    console.log(i); 
+}
+
+setInterval(iterate, 1000); </code></pre>
+<p>The above code just increases the variable <code>i</code> every second and outputs the result to console.log(). I was <a href="http://codepen.io/j4n/pen/qEwLvM">experimenting</a> with the audio api recently and had to use <code>setInterval()</code> with an iterator just like in the above example. </p>
+<p>The problem with the above example is that, if you declare the <code>i</code> iterator outside of the <code>iterate</code> function, it means you can't use the <code>i</code> variable anywhere else.  Watch what happens when you do: </p>
+<pre><code class="language-javascript">
+var i=0; 
+
+function iterate(){
+    i++; 
+    console.log(i); 
+}
+
+setInterval(iterate, 1000); 
+
+for (var i=0; i&lt;10;i++){
+    console.log('inside a loop', i); 
+}</code></pre>
+<p>By the time <code>setInterval</code> starts, the value  of <code>i</code> is 10. The simple solution would be to just not use the <code>i</code> variable anywhere else, but I like using <code>i</code> for iterators, so instead, we can use partial application to declutter our variables. </p>
+<p>Behold: </p>
+<pre><code class="language-javascript">function createIterator(i){
+    return function(){
+        i++; 
+        console.log(i); 
+    }
+}
+
+var iterate = createIterator(0); 
+
+setInterval(iterate, 1000); </code></pre>
+<p>Using partial application, we can properly encapsulate the variable <code>i</code> inside our <code>iterate()</code> function, and every time that function is called, the variable <code>i</code> will increase without interfering with the outside world.</p>      
+      <time itemprop="datePublished" pubdate datetime="04/12/2015" title="Apr 12, 2015">published Apr 12, 2015</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

@@ -1,0 +1,529 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+@font-face {
+     font-family: Helvetica Neue LT Std, Thin; src: url('Helvetica Neue LT Std'); {}
+}
+@font-face {
+     font-family: Arial; src: url('Arial'); {}
+}
+@font-face { 
+    font-family: GlyphWorld Desert; src: url('GlyphWorld Desert'); {}    
+}
+
+    @font-face { 
+        font-family: GT America Trail; src: url('GT America Trail'); {}    
+}
+img{
+    max-width: 33vw;
+    min-width: 33vw;
+}
+section{
+    min-height: 100%;
+}
+/* Header*************************************** */
+header {
+}
+
+#nav{
+    width: 50vw;
+    list-style: none;
+     position: absolute;
+     min-height: 100%;
+}
+#nav li div{
+    background-color: blue;
+}
+#nav li div a{
+    margin-top: 5%;
+    width: auto;
+    vertical-align: center;
+    text-align: center;
+    padding: 3%;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+     font-family: 'Helvetica Neue LT Std', Bold;
+   /* font-family: 'germania-one', serif;*/
+    color: transparent;
+    font-size: 12em;
+}
+.draggable{
+     align-content: center;
+    float: left;
+    position: relative;
+    height: 33vh;
+    left: +10%;
+    }
+.draggable::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+#workd{
+    transform: rotate(0deg);
+}
+#aboutd{
+    transform: rotate(0deg);
+}
+#contactd{
+    transform: rotate(0deg);
+}
+#info1 {
+      width: 65%;
+    padding: 5%;
+     vertical-align: middle;
+     text-align: center;
+    border-radius: 100% 60% 220% 80%;
+}
+#info1:hover {
+    cursor: e-resize;
+}
+#info2{
+     padding: 5%;
+     vertical-align: middle;
+    text-align: center;
+     width: 80%;
+    border-radius:10% 50% 10% 50%;
+}
+#info2:hover {
+    cursor: e-resize;
+      border-radius: 10% 40% 10%;
+}
+#info3{
+   padding: 5%;
+     text-align: center;
+     width: 70%;
+     border-radius: 200% 25% 190% 100%;
+}
+
+#info3:hover {
+    cursor: e-resize;
+ border-radius: 20% 2% 19% 10%;
+}
+.gradient {
+  width: 100%;
+    border-width: 5vh;
+  border-image: repeating-linear-gradient(45deg, blue, yellow, blue 20%) 45;
+}
+.gradient:hover {
+         width: 100%;
+    border-width: 5vh;
+  border-image: repeating-linear-gradient(90deg, yellow, blue, yellow 15%) 45;
+}
+/* Home***************************************** */
+ /* .loader {
+position: fixed;
+    z-index: 99;
+    left: 0;
+    right:0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader >img {
+    width: 100%;
+}
+.loader.hidden {
+    animation: fadeout 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes fade0ut {
+    100%
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+}*/
+#home{
+    border-style: solid;
+    border-color: blue;
+    background-image: url(img/hd_1.gif);
+    background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment:scroll;
+  background-size: cover;
+    border-width: 2.5vh;
+}
+#name {
+    padding-top: 2%;
+    padding-right: 2%;
+}
+#abme {
+    display: block;
+    text-align: right;
+    font-family: Arial, bold;
+    line-height: 1.1em;
+    color: blue;
+    font-size: 3em;
+    font-style: Ultrathin;
+    padding-right: 6%;
+}
+
+#seb {
+    display: block;
+    text-shadow: 30px 30px 30px blue;
+    font-family: GlyphWorld Desert;
+    line-height: 0.9em;
+    color: yellow;
+    font-size: 15em;
+    text-align: right;
+}
+/* About***************************************** */
+#about{
+    padding-left: 5%;
+    padding-right: 5%;
+    /*border-style: solid;
+    border-width: 20%;
+    border-color: blue;*/
+    background-color: blue;
+    background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment:scroll;
+  background-size: cover;
+}
+#titelabout {
+    color: yellow;
+     font-style: bold;
+	/*-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: yellow;*/
+    padding-top: 5%;
+    text-align: left;
+    font-family: 'GT America Trail', bold;
+    font-weight: 900;
+	font-size: 12em;
+    text-transform: uppercase;
+    }
+.me {
+    font-weight: 800;
+    font-family:  'Playfair Display', bold;
+    font-style: normal;
+     text-transform: uppercase;
+    color: yellow;
+    line-height: 0.9em;
+    font-size: 10em;
+}
+#readm {
+    font-family:  'Playfair Display', bold;
+    font-style: oblique;
+    color: transparent;
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: yellow;
+}
+/* Work***************************************** */
+.navwork li a{
+       display: block;
+  
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+     font-family: 'Playfair Display', regular;
+   /* font-family: 'germania-one', serif;*/
+    color: blue;
+}
+.workheadline{
+    font-family: GlyphWorld Desert;
+    line-height: 0.9em;
+    color: blue;
+    font-size: 6em;
+    font-style: bold;
+}
+.navwork{
+     margin-right: 2%;
+    margin-top: 5%;
+}
+.navwork li {
+       font-size: 3em;
+     list-style: none;
+    text-align: right;
+    color: blue;
+}
+#work {
+    height: 100%;
+    position: relative;
+}
+div.wrapper {
+
+}
+.wrapper {
+    padding-bottom: 30%;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-bottom: 40%;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  grid-gap: 15%;
+  grid-auto-rows: minmax(auto, auto);
+}
+.wrapper img{
+  position: center center;
+}
+video{
+    max-width: 33vw;
+    min-width: 33vw;
+}
+#one {
+    padding-bottom: 25%;
+  grid-column: 1 ;
+  grid-row: 1;
+}
+#two {
+    margin-top: 25%;
+  grid-column: 2;
+  grid-row: 1;
+}
+#three {
+  grid-column: 1;
+  grid-row: 2;
+}
+#four {    
+ margin-top: 50%;
+  grid-column: 2;
+  grid-row: 2;
+}
+#five {
+  grid-column: 1;
+  grid-row: 3;
+}
+#six {
+     margin-top: 50%;
+  grid-column: 2;
+  grid-row: 3;
+    clear: both;
+}
+.container {
+    height: content;
+  position: relative;
+  width: 35%;
+}
+.container img{
+    height:auto;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#links {
+padding-top: auto;
+   padding-bottom: auto;
+}
+.overlay {
+    box-sizing: content-box;
+  position: absolute;
+  bottom:0 ;
+  left: 0;
+  right: 0;
+  background-color: blue;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  width: 50%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+/* footer++++++++++++++++++++++++++++++++++++++++++++*/
+/*.scroll-left {
+ background: blue;
+ color:blue;
+}
+.scroll-left p:hover {
+    color: orange;
+}
+.scroll-left p {
+    overflow:hidden;
+    font-size: 5em;
+    font-family: 'Rakkas', cursive;
+    color: blue;
+    display: inline;
+ position: absolute;
+ width: 100%;
+ line-height: 1em;
+ text-align: center;
+ /* Starting position
+ transform:translateX(1%);
+  Apply animation to this element
+ animation: scroll-left 20s linear infinite;
+} */
+/* Move it (define the animation) 
+@keyframes scroll-left {
+ 0%   {
+ transform: translateX(100%); 		
+ }
+ 100% {
+ transform: translateX(-100%); 
+ }
+}*/
+footer {
+    min-width: 100%;
+}
+#contact { 
+    padding: 0;
+    margin: 0;
+    min-width: 100%;
+    background-image: url(img/mllcontainer-nach-en-840--1100-liter--runddeckel--mit-aufnahme-kammleisten--blau.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment:scroll;
+    background-size: cover;
+    text-decoration: none;
+    list-style: none;
+}
+footer div a{
+    line-height: 0.8;
+    font-size: 3em;
+    font-family: 'Rakkas', cursive;
+    float: left;
+}
+/* Hoverblur++++++++++++++++++++++++++++++++++++++++++++
+.btn {
+  background-image: #f4511e;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.btn:hover {opacity: 1}*/
+
+@media screen and (max-width: 600px){
+    #nav a{
+   transform: rotate(-90deg)
+}
+    img{
+    max-width: 95vw;
+    min-width: 95vw;
+}
+
+    #nav li div a{
+    text-transform: rotate(-90deg);
+    font-family: 'Helvetica Neue LT Std', regular;
+    font-size: 6em;
+}
+
+    video{ min-width: 95vw;}
+    /************************header****************/
+
+#seb {
+    
+    float:right;
+    color: blue;
+   /* transform: rotate(-90deg);*/
+    text-shadow: 20px 20px 20px yellow;
+    font-family: GlyphWorld Desert;
+    line-height: 0.9em;
+    font-size: 3em;
+    text-align: right;
+}
+    .draggable{
+        transform: rotate(-90deg);
+     align-content: center;
+    float: left;
+    position: relative;
+    height: 33vh;
+    left: +10%;
+    }
+    /************************WORK******************/
+.workheadline{
+        font-size: 3.5em; 
+    }
+    .wrapper {
+    margin-top: 10%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 40%;
+        display: block;
+  grid-template-columns: none;
+  grid-auto-rows: minmax(auto, auto);
+}
+.container {
+height: content;
+  position: relative;
+  width: 100%;
+    margin-bottom: 10%;
+}
+  .container img{
+    height:auto;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: blue;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease-out;
+}
+
+.container:hover .overlay {
+  width: 50%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+/***************************ABOUT***************/
+    #titelabout {
+     font-style: bold;
+	/*-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: yellow;*/
+    padding-top: 5%;
+    text-align: left;
+    font-family: 'GT America Trail', bold;
+    font-weight: 900;
+	font-size: 6em;
+    text-transform: uppercase;
+    }
+.me {
+    font-weight: 800;
+    font-family:  'Playfair Display', bold;
+    font-style: normal;
+     text-transform: uppercase;
+    color: yellow;
+    line-height: 0.9em;
+    font-size: 3.8em;
+}
+}

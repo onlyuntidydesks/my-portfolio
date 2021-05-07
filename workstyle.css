@@ -1,0 +1,60 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.all {
+  grid-template-columns: 1fr, 1fr,1fr;
+  grid-gap: 15%;
+  grid-auto-rows: minmax(auto, auto,auto);
+}
+.row {
+    position: relative;
+    display: inline;
+}
+.container {
+    min-width: 100%;
+}
+.col-sm-4 {
+    overflow: hidden;
+    width: 33vw;
+}
+section {
+    min-width: 100%;
+}
+#about {
+    flex-direction: column-reverse;
+     float: right;
+    display: inline-block;
+     font-weight: 900;
+      font-family: 'Playfair Display', regular;
+    font-size: 3em;
+    color: yellow;
+    margin-top: 2%;
+}
+#work {
+     flex-direction: column-reverse;
+    float: right;
+    display: inline-block;
+     font-weight: 900;
+      font-family: 'Playfair Display', regular;
+    font-size: 3em;
+    color: yellow;
+    margin-top: 2%;
+}
+#name {
+     flex-direction: column-reverse;
+     display: inline-block;
+      font-family: 'Playfair Display', regular;
+    font-weight: 900;
+     font-size: 3em;
+    line-height: 0.9em;
+    color: yellow;
+    margin-top: 2%;
+      margin-right: 2%;
+    float: right;
+    clear: both;
+}

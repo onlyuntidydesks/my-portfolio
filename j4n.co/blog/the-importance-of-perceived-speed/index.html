@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | The Importance of Perceived Speed</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="the-importance-of-perceived-speed">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+#loadingbar-frame{
+position: relative; 
+}
+.button-container{
+	text-align: center; 
+}
+.clickme{
+	display: inline-block; 
+	background-color: #CEEBDB; 
+	width: 40px; 
+	height: 40px;  
+	margin: 5px; 	
+	border-radius: 50%; 
+	box-shadow: 2px 2px;
+	line-height: 40px; 
+}
+
+#frame, .frame{
+text-align: center; 
+min-height: 400px; 
+width: 100%; 
+position: relative; 
+}
+
+.loader{
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 460px; 
+  background: url('http://www.htc.com/managed-assets/shared/desktop/smartphones/htc-one-m8/ksp/img/blinkfeed/page-loader.gif') no-repeat center center white;
+  background-size: 50px 50px;
+  z-index: 1; 
+  opacity: 0.5; 
+}
+#frame img, .frame img{
+	margin: 5px;
+	height: 150px; 
+	width: 200px; 
+  background-color: #F1F1F1; 
+  display: inline-block; 
+}
+.chromify{
+width: 100%; 
+overflow: hidden; 
+}</style>
+
+<a class='prevnext-nav prev' href='../Creating-your-own-css-grid-system/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../schema-org-intro-to-structured-data/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">The Importance of Perceived Speed</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>"Page speed is in the eye of the beholder" - me. </p>
+<p>As I was browsing youtube recently, I was struck by just how fast clicking through pages seemed. <br />
+Now obviously, Google should have the fastest servers on the planet, but it got me thinking about that red loading bar youtube introduced last year. </p>
+<p>Does this loading bar effect the 'perceived' speed of the page? does it seem faster than other design patterns? My guess is yes, but I wanted to test this hypothesis myself. </p>
+<p>Below are three design patterns for content loading, in each case the content is loaded at exactly the same speed. See for yourself which one feels fastest. </p>
+<h2>Top Loading Bar</h2>
+<div style="width=100%;height:500px;" class="browser" id="loadingbar-frame">
+  <div id="loadingbar"></div>
+  <p class="button-container">
+    <a href="http://api.dribbble.com/players/jackietrananh/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-1 clickme">1</a> 
+    <a href="http://api.dribbble.com/players/maz_martin/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-1 clickme">2</a>
+    <a href="http://api.dribbble.com/players/super_furry/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-1 clickme">3</a> 
+    <a href="http://api.dribbble.com/players/megdraws/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-1 clickme">4</a> 
+  </p>
+  <div id="frame"></div>
+</div>
+<h2>Ajax Spinner</h2>
+<div style="width=100%;height:500px;" class="browser">
+  <p class="button-container">
+    <a href="http://api.dribbble.com/players/jackietrananh/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-2 clickme">1</a> 
+    <a href="http://api.dribbble.com/players/maz_martin/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-2 clickme">2</a>
+    <a href="http://api.dribbble.com/players/super_furry/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-2 clickme">3</a> 
+    <a href="http://api.dribbble.com/players/megdraws/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-2 clickme">4</a> 
+  </p>
+  <div class="frame"></div>
+</div>
+<h2>No Loader</h2>
+<div style="width=100%;height:500px;" class="browser">
+  <p class="button-container">
+    <a href="http://api.dribbble.com/players/jackietrananh/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-3 clickme">1</a> 
+    <a href="http://api.dribbble.com/players/maz_martin/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-3 clickme">2</a>
+    <a href="http://api.dribbble.com/players/super_furry/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-3 clickme">3</a> 
+    <a href="http://api.dribbble.com/players/megdraws/shots?callback=?" data-datatype="json" data-type="GET" data-target="#frame" class="ajax-call-3 clickme">4</a> 
+  </p>
+  <div class="frame"></div>
+</div>
+<link href="../../content/4-blog/11-the-importance-of-perceived-speed/chromify.css" rel="stylesheet">
+<link href="../../content/4-blog/11-the-importance-of-perceived-speed/loadingbar.css"rel="stylesheet">      
+      <time itemprop="datePublished" pubdate datetime="01/09/2014" title="Jan 09, 2014">published Jan 09, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  <script> 
+$.fn.chromify = function(options) {
+    var settings = $.extend({
+        fontSize: 12,
+        title: "default title",
+        url: "http://example.com",
+        favicon: ''
+    }, options );
+
+    $(this).replaceWith(function(){
+
+    var content = this.outerHTML;
+    var newContent = 
+    "<div class='chromify' style='font-size:"+settings.fontSize+"px; '>"+
+      "<div class='chromify-top-bar'>"+
+          "<div class='chromify-circle-close'></div>"+
+          "<div class='chromify-circle-minify'></div>"+
+          "<div class='chromify-circle-zoom'></div>"+
+          "<div class='chromify-tab'>"+
+            settings.title+
+          "</div>"+
+      "</div>"+
+      "<div class='chromify-main-bar'>"+
+        "<div class='chromify-button-back'>"+
+          "<div class='top-block'></div>"+
+          "<div class='bottom-block'></div>"+
+          "<div class='straight-block'></div>"+
+        "</div>"+
+        "<div class='chromify-button-forward'>"+
+          "<div class='top-block'></div>"+
+          "<div class='bottom-block'></div>"+
+          "<div class='straight-block'></div>"+
+        "</div>"+
+        "<div class='chromify-button-reload'>"+
+          "<div class='chromify-arrow-down'></div>"+
+        "</div>"+
+        "<div class='chromify-address-bar'>"+
+          "<span class='favicon' style='background-image: url("+settings.favicon+");'></span>"+
+          "<span class='url-address'>"+
+          settings.url+
+          "</span>"+
+        "</div>"+
+        "<div class='sandwich-button'>"+
+          "<div class='sandwich-line'></div>"+
+          "<div class='sandwich-line'></div>"+
+          "<div class='sandwich-line'></div>"+
+        "</div>"+
+      "</div>"+
+      content+
+    "</div>";
+    return newContent;
+    });
+};
+</script> 
+
+<script> 
+
+/* ===========================================================
+ * jquery-loadingbar.js v1
+ * ===========================================================
+ * Copyright 2013 Pete Rojwongsuriya.
+ * http://www.thepetedesign.com
+ *
+ * Add a Youtube-like loading bar  
+ * to all your AJAX links 
+ *
+ * https://github.com/peachananr/loading-bar
+ *
+ * ========================================================== */
+
+!function($){
+  
+  var defaults = {
+    replaceURL: false,
+    target: "#loadingbar-frame",
+    direction: "right",
+    
+    /* Deafult Ajax Parameters  */
+    async: true,
+    complete: function(xhr, text) {},
+    cache: true,
+    error: function(xhr, text, e) {},
+    global: true,
+    headers: {},
+    statusCode: {},
+    success: function(data, text, xhr) {},
+    dataType: "html"
+  };
+  
+  $.fx.step.textShadowBlur = function(fx) {
+    $(fx.elem).prop('textShadowBlur', fx.now).css({textShadow: '0 0 ' + Math.floor(fx.now) + 'px black'});
+  };
+  
+  
+  $.fn.loadingbar = function(options){
+    var settings = $.extend({}, defaults, options),
+        el = $(this),
+        href = el.attr("href"),
+        target = (el.data("target")) ? el.data("target") : settings.target,
+        type = (el.data("type")) ? el.data("type") : settings.type,
+        datatype = (el.data("datatype")) ? el.data("datatype") : settings.dataType
+      
+    //return this.each(function(){
+      el.click(function(event){
+        event.preventDefault();
+      })
+      el.mouseup(function (event){
+        
+        event.preventDefault();
+        $.ajax({
+          type: type,
+          url: $(this).attr('href'),
+          async: settings.async,
+          complete: settings.complete,
+          cache: settings.cache,
+          error: settings.error,
+          global: settings.global,
+          headers: settings.headers,
+          statusCode: settings.statusCode,
+          success: settings.success,
+          dataType : datatype,
+          beforeSend: function() {
+            $("#loadingbar").addClass("waiting").append($("<dt/><dd/>"));
+            $("#loadingbar").animate({
+              width: (30 + Math.random() * 30) + "%", 
+              opacity: 1
+            })           
+          }
+
+
+        }).always(function() {
+          
+          $("#loadingbar").animate({width: "101%"}).delay(200).fadeOut(400, function(){
+            $(this).css({width:'1%', opacity: 0, display: 'block'})
+          });
+    
+        }).done(function(data) {
+          if ( history.replaceState && settings.replaceURL == true ) history.pushState( {}, document.title, href );
+          if (settings.done) {
+            settings.done(data, target)
+          } else {
+            $(target).html(data)
+          }
+          
+        });
+        return false
+      });
+      
+      
+    //});
+  }
+  
+}(window.jQuery);
+</script> 
+
+<script> 
+$(document).ready(function(){
+
+$(".browser").chromify();
+
+
+$(".ajax-call-1").loadingbar({
+  cache: false, 
+  done: function(data) {
+    setTimeout(function(){
+    $("#frame").empty()
+    $.each( data.shots, function( i, item ) {
+      $( "<img/>" ).attr( "src", item.image_teaser_url+"?cache-bust=1" ).prependTo( frame );
+    });        
+    }, 1000)
+  }
+});
+
+
+$(".ajax-call-2").click(function (event){
+  event.preventDefault();
+  var frame = $(this).parents('.browser').find('.frame');
+
+  var settings = {},
+    el = $(this),
+    href = el.attr("href"),
+    target = el.data("target"),
+    type = el.data("type"),
+    datatype = el.data("datatype")
+
+
+  $.ajax({
+    type: type,
+    url: $(this).attr('href'),
+    async: settings.async,
+    complete: settings.complete,
+    cache: false,
+    error: settings.error,
+    global: settings.global,
+    headers: settings.headers,
+    statusCode: settings.statusCode,
+    success: settings.success,
+    dataType : datatype, 
+    beforeSend: function(){
+      frame.append('<div class="loader"></div>')
+      }
+    })
+    .done(function(data) {
+        setTimeout(function(){
+        frame.find('.loader').remove()
+        $.each( data.shots, function( i, item ) {
+          $( "<img/>" ).attr( "src", item.image_teaser_url+"?cache-bust=2" ).prependTo( frame );
+        });        
+        }, 1000)
+    })
+});
+
+
+$(".ajax-call-3").click(function (event){
+  event.preventDefault();
+  var frame = $(this).parents('.browser').find('.frame');
+
+  var settings = {},
+    el = $(this),
+    href = el.attr("href"),
+    target = el.data("target"),
+    type = el.data("type"),
+    datatype = el.data("datatype")
+
+
+  $.ajax({
+    type: type,
+    url: $(this).attr('href'),
+    async: settings.async,
+    complete: settings.complete,
+    cache: false,
+    error: settings.error,
+    global: settings.global,
+    headers: settings.headers,
+    statusCode: settings.statusCode,
+    success: settings.success,
+    dataType : datatype, 
+    beforeSend: function(){
+      frame.empty()
+      }
+    })
+    .done(function(data) {
+        
+        setTimeout(function(){
+        $.each( data.shots, function( i, item ) {
+          $( "<img/>" ).attr( "src", item.image_teaser_url+"?cache-bust=3" ).prependTo( frame );
+        });        
+        }, 1000)
+
+    })
+});
+
+	
+}); //document ready
+</script>
+
+</body>
+
+</html>
+
+<!-- Localized -->

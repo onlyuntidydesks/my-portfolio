@@ -1,0 +1,109 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.container {
+    position: relative;
+    flex-direction: row;
+    display: grid; /* or inline-flex */
+    min-width: 100%;
+    min-height: 80%;
+}
+nav {
+    margin-top: 2%;
+       margin-right: 2%;
+    float: right;
+    display: block;
+    position: sticky;
+}
+li {
+    list-style: none;
+}
+#about {
+     font-family: 'GT America Trial';
+     flex-direction: column;
+     float: right;
+    display: inline-block;
+     font-weight: 900;
+    font-size: 3.5em;
+     line-height: 0.9em;
+    color: yellow;
+    margin-top: 2%;
+}
+#work {
+     font-family: 'GT America Trial';
+    flex-direction: column;
+    float: right;
+    display: inline-block;
+     font-weight: 900;
+    font-size: 3.5em;
+     line-height: 0.9em;
+    color: yellow;
+    margin-top: 2%;
+}
+#name {
+     font-family: 'GT America Trial';
+     flex-direction: column;
+     display: inline-block;
+    font-weight: 900;
+     font-size: 3.5em;
+    line-height: 0.9em;
+    color: yellow;
+    margin-top: 2%;
+      margin-right: 2%;
+    float: right;
+    clear: both;
+}
+.headline {
+     font-family: 'GT America Trial';
+    color: blue;
+      font-weight: bolder;
+    font-size: 3.5em;
+}
+p.leben {
+    padding-right: 30%;
+}
+#yell {
+    color:yellow;
+}
+#yell2 {
+    color:yellow;
+}
+.leben {
+    font-family: 'GT America Trial';
+    color: blue;
+    line-height: 1.1em;
+    font-size: 2.2em;
+}
+.gradient:hover {
+    justify-content: flex-end;
+   background-image: linear-gradient(90deg, yellow , blue);
+}
+.gradient {
+    justify-content: flex-end;
+   background-image: linear-gradient(90deg, pink , green);
+}
+nav ul{
+    text-align: right;
+    list-style: none;
+    display:block;
+}
+#outerCircleText {
+     font-family: 'GT America Trial';
+font-size: 8em;
+color: yellow;
+position: absolute;top: 0;left: 0;z-index: 3000;cursor: default;
+}
+#outerCircleText div {
+    position: relative;
+}
+#outerCircleText div div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="Illu.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+   <script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+     dots[slideIndex-1].className += " active";
+}
+</script>
+ <script>
+var slideIndex = 2;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides2");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+}
+</script>
+      <style>
+
+</style>
+</head>
+<body>
+<section class="all">
+<div class="container">
+    <div class="row">
+     <nav class="realnav">
+            <li><a id="name" href="mainpage.html">Sebastian<br>Scholtze</a></li>
+           <li><a id="about">About</a></li>
+            <li><a id="work">Work</a></li>
+    </nav>
+        </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3></h3>
+      <nav id="worknav">
+          <li><a>Dr. Koarl</a></li>
+          <li><a>Mr. Long</a></li>
+          
+        </nav>
+    </div>
+    <div class="col-sm-4" id="one">
+      <img class="4card__image" src="img/waterpistol.png">
+      
+    </div>
+    <div class="col-sm-4" id="two">
+          <img class="4card__image" src="img/Screenshot_2020-07-17%20Sebastian%20Scholtze%20(%20scholtze_sebastian)%20%E2%80%A2%20Instagram%20photos%20and%20videos(1).png">
+      
+    </div>
+  </div>
+     <div class="row">
+    <div class="col-sm-4">
+      <img class="4card__image" src="img/Screenshot_2020-07-17%20Sebastian%20Scholtze%20(%20scholtze_sebastian)%20%E2%80%A2%20Instagram%20photos%20and%20videos(1).png">
+    </div>
+    <div class="col-sm-8">
+      <img class="8card__image" src="img/Screenshot_2020-07-17%20Sebastian%20Scholtze%20(%20scholtze_sebastian)%20%E2%80%A2%20Instagram%20photos%20and%20videos.png">
+      
+    </div>
+   
+  </div>
+      <div class="row">
+    <div class="col-sm-4">
+
+    </div>
+          
+    <div class="col-sm-4" id="one">
+      <img class="4card__image" src="img/waterpistol.png">
+      
+    </div>
+    <div class="col-sm-4" id="two">
+          <img class="4card__image" src="img/Screenshot_2020-07-17%20Sebastian%20Scholtze%20(%20scholtze_sebastian)%20%E2%80%A2%20Instagram%20photos%20and%20videos(1).png">
+    </div>
+            </div>
+    <div class="row">
+    <div class="col-sm-4">
+        blblblbl
+      
+    </div>
+        
+    <div class="col-sm-4">
+<div class="w3-content w3-display-container">
+  <img class="mySlides" id="slide1" src="img/tierslide/Zeichenfl%C3%A4che%201%20Kopie%202.png" style="width:100%">
+  <img class="mySlides"  src="img/tierslide/Zeichenfl%C3%A4che%201.png" style="width:100%">
+
+
+  <button class="w3-buttons w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-buttons w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+</div>
+        <div class="col-sm-4">
+      
+    </div>
+        </div>
+        <div class="row">
+    <div class="col-sm-4">
+        blblblbl
+      
+    </div>
+        
+    <div class="col-sm-4">
+<div class="w3-content w3-display-container">
+  <img class="mySlides2" id="slide2" src="img/tierslide/Zeichenfl%C3%A4che%201%20Kopie.png" style="width:100%">
+  <img class="mySlides2" src="img/tierslide/Zeichenfl%C3%A4che%201%20Kopie%203.png" style="width:100%">
+
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10096;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10097;</button>
+</div>
+</div>
+        <div class="col-sm-4">
+      
+    </div>
+        </div>
+<div class="row">
+    <div class="col-sm-4">
+      
+    </div>
+    <div class="col-sm-4" id="one">
+      <img src="img/schwarzweis.jpg">
+      
+    </div>
+    <div class="col-sm-4" id="two">
+          <img src="img/Screenshot_2020-07-17%20Sebastian%20Scholtze%20(%20scholtze_sebastian)%20%E2%80%A2%20Instagram%20photos%20and%20videos(1).png">
+      
+    </div>
+</div>
+</section>
+</body>
+</html>

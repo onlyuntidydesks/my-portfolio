@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | My First Web Component</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="my-first-web-component">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+  
+
+<style>
+</style>
+
+<a class='prevnext-nav prev' href='../the_internet_blues/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../batch-rendering-screenshots-with-phantomjs/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+   
+    <div class="overlay" style="background-image: url('../../content/4-blog/1-my-first-web-component/header.png');"></div> 
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">My First Web Component</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>If you're like me, you've probably heard a lot about Web Components^tm over the past few years, but if you've never created one yourself, I'll show you how. </p>
+<p>As you probably know, the Web Component spec is a beast. It encompasses <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM">the Shadow DOM</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements">Custom Elements</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/HTML_Imports">HTML Imports</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">Templates</a>. All these specs combine like Voltron to make Web Components (but unlike Voltron, these specs are currently only work in Firefox and Chrome). </p>
+<h1>Our First Web Component</h1>
+<p data-height="140" data-theme-id="7625" data-slug-hash="BjomNZ" data-default-tab="result" data-user="j4n" class='codepen'></p>
+<script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+<p>We'll be making a doge button like the one pictured above. At the end of this tutorial, you'll be able to use this component by inserting a <code>&lt;button is="doge-button"&gt;so click&lt;/button&gt;</code> element on your page. If you don't want to extend the <code>&lt;button&gt;</code> element, you'll be able to insert the doge button with the cooler <code>&lt;doge-button&gt;so click&lt;/doge-button&gt;</code> syntax. </p>
+<p>The CSS and HTML we'll be using for our doge-button looks like this: </p>
+<h4>Our CSS:</h4>
+<pre><code class="language-css">.doge-button{
+    position: relative; 
+    display: inline-block; 
+    font-family: "Comic Sans MS", 'Comic Sans', "Marker Felt";
+    cursor: pointer; 
+}
+
+.doge-face {
+    background-image:   url('https://dl.dropboxusercontent.com/u/19492365/doge.png');
+    height: 80px; 
+    background-size: contain;
+    background-repeat: no-repeat; 
+    background-position: left center; 
+}
+
+.doge-button:hover .doge-txt{
+    transform: rotate(-10deg); 
+    color: yellow; 
+    text-shadow: 2px 2px 0 magenta; 
+}
+
+.doge-txt{
+    text-shadow: 0 0 0 #F0F;
+    font-weight: bold;
+    position: relative;
+    margin-left: 30px;
+    margin-bottom: 0px;
+    margin-top: -30px;
+    font-size: 18px;
+    color: #F0F;
+    transition: transform 0.1s ease-in, color 0.1s ease-in, text-shadow 0.1s ease-in;
+    display: block;
+}
+.doge-button:hover:after{
+    content: "WOW,"; 
+    font-size: 18px;
+    display: block; 
+    position: absolute;
+    top: 15px; 
+    right: 0px; 
+}</code></pre>
+<p><em>Nothing out of the ordinary here.</em> </p>
+<h4>Our HTML</h4>
+<pre><code class="language-HTML">&lt;div class="doge-button"&gt;
+    &lt;div class="doge-face"&gt;&lt;/div&gt; 
+    &lt;div class="doge-txt"&gt;
+        &lt;content&gt;&lt;/content&gt;
+    &lt;/div&gt; 
+&lt;/div&gt; </code></pre>
+<p><em>Pretty ordinary HTML, wait, what's that content tag…</em></p>
+<h2>1. Building The Template</h2>
+<p>HTML templates basically let you shove HTML/CSS/JS into a <code>&lt;template&gt;</code> tag for later re-use. A template tag is not rendered on page load (almost as if it had comments around it), instead it just sits there, waiting, until you to insert it into the document yourself.</p>
+<p>Inside our <code>&lt;template&gt;</code> tag, we'll include a nifty <code>&lt;content&gt;</code> tag, which <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/content">"acts as an insertion point for the shadowDOM"</a> which basically means, that's where the content between the <code>&lt;doge-button&gt;</code> tags will go. </p>
+<p>All we have to do to create our HTML Template^tm is put the doge-button HTML and CSS inside the <code>&lt;template&gt;</code> tag. Once the HTML &amp; CSS is in the template, you'll notice the doge-button it doesn't render on the page anymore (as per the explanation above). To reference our template in JS, we'll give it the ID <code>so-template</code>. </p>
+<pre><code class="language-html">&lt;template id="so-template"&gt;
+      &lt;style&gt;
+        .doge-button{
+            position: relative; 
+            display: inline-block; 
+            font-family: "Comic Sans MS", 'Comic Sans', "Marker Felt";
+            cursor: pointer; 
+        }
+
+        .doge-face {
+            background-image:   url('https://dl.dropboxusercontent.com/u/19492365/doge.png');
+            height: 80px; 
+            background-size: contain;
+            background-repeat: no-repeat; 
+            background-position: left center; 
+        }
+
+        .doge-button:hover .doge-txt{
+            transform: rotate(-10deg); 
+            color: yellow; 
+            text-shadow: 2px 2px 0 magenta; 
+        }
+
+        .doge-txt{
+            text-shadow: 0 0 0 #F0F;
+            font-weight: bold;
+            position: relative;
+            margin-left: 30px;
+            margin-bottom: 0px;
+            margin-top: -30px;
+            font-size: 18px;
+            color: #F0F;
+            transition: transform 0.1s ease-in, color 0.1s ease-in, text-shadow 0.1s ease-in;
+            display: block;
+        }
+        .doge-button:hover:after{
+            content: "WOW,"; 
+            font-size: 18px;
+            display: block; 
+            position: absolute;
+            top: 15px; 
+            right: 0px; 
+        }
+      &lt;/style&gt;
+
+      &lt;div class="doge-button"&gt;
+          &lt;div class="doge-face"&gt;&lt;/div&gt; 
+          &lt;div class="doge-txt"&gt;
+              &lt;content&gt;&lt;/content&gt;
+          &lt;/div&gt; 
+      &lt;/div&gt; 
+
+&lt;/template&gt;</code></pre>
+<p>We can now access our template in JS with a simple getElementById selector. </p>
+<pre><code class="language-javascript">&lt;script&gt;
+    var template = document.getElementById('soTemplate');
+&lt;/script&gt;</code></pre>
+<h2>2. Creating The Custom Element</h2>
+<p>Custom Elements are simple, all you have to do make one is create a new object based on an HTMLElement prototype, insert a shadow root into the element during the elements createdCallback function, append a template to that shadow root, and register the element with the DOM. Bingo bango… </p>
+<p>Simple right? Well, maybe not. The first thing you have to understand about this step is that every ordinary HTML element has a javascript 'interface', basically a javascript object corresponding to a tag. A tag like <code>&lt;input&gt;</code> corresponds to the HTMLInputElement object, which stores all the <code>&lt;input&gt;</code> elements behaviours and properties, such as the <code>value</code> property. These 'interface' objects all inherit from the <code>HTMLElement</code> object, which in turn inherits from the <code>Element</code> object.  This is where that whole "Document <strong>Object</strong> Model" term comes from. </p>
+<p>For our doge-button, we'll be inheriting from the basic <code>HTMLElement</code> prototype. By inheriting from <code>HTMLElement</code>, we'll bestow all the glorious functionality and behaviours of of a <code>&lt;div&gt;</code> tag onto our <code>&lt;doge-button&gt;</code>. I know… pretty exciting, but don't worry, we'll cover extending other elements later. </p>
+<p>Now that we know what prototype we'll be inheriting from, we can create a new object based on that prototype. </p>
+<pre><code class="language-js">&lt;script&gt;
+    var template = document.getElementById('soTemplate');
+    var muchPrototype = Object.create(HTMLElement.prototype);
+&lt;/script&gt;</code></pre>
+<h2>3. Inserting The ShadowDOM Root</h2>
+<p>Once we have a prototype object, we attach a shadowDOM Root to it using a special <code>createdCallback</code> callback function. This callback is executed after the object is created (there are a few other custom element callbacks, but I'll let you play around with those later). </p>
+<p>We create a new shadow root using the apty named <code>createShadowRoot()</code> function. </p>
+<p>Once we have a shadow root, we append our template to it. We do that by cloning the template with <code>document.importNode()</code> (the 'true' parameter makes a 'deep clone'), and then we append that clone to the shadow root with <code>appendChild()</code>. </p>
+<pre><code class="language-js">&lt;script&gt;
+    var template = document.getElementById('soTemplate');
+    var muchPrototype = Object.create(HTMLElement.prototype);
+
+    muchPrototype.createdCallback = function() {
+      var root = this.createShadowRoot();
+      var clone = document.importNode(template.content, true);
+      root.appendChild(clone);  
+    }
+&lt;/script&gt;</code></pre>
+<h2>4. Registering the Custom Element</h2>
+<p>Now that we have our custom HTML Element, all we have to do to use it on the page is register it with the DOM. This is done with the <code>document.registerElement</code> function. The first parameter of this function is a string with the name of the new element. <strong>The custom element name must include a dash</strong>. Ours is 'doge-button'.</p>
+<pre><code class="language-js">&lt;script&gt;
+    var template = document.getElementById('soTemplate');
+    var muchPrototype = Object.create(HTMLElement.prototype);
+
+    muchPrototype.createdCallback = function() {
+      var root = this.createShadowRoot();
+      var clone = document.importNode(template.content, true);
+      root.appendChild(clone);  
+    }
+
+    document.registerElement('doge-button', {
+      prototype: muchPrototype
+    });
+&lt;/script&gt;</code></pre>
+<h2>5. Our <code>&lt;doge-button&gt;</code></h2>
+<p>At this point, we can finally use our brand new <code>&lt;doge-button&gt;</code> element! </p>
+<p>This is the entire HTML/CSS/JS for doing so: </p>
+<pre><code class="language-html">&lt;template id="soTemplate"&gt;
+    &lt;style&gt;
+        .doge-button{
+            position: relative; 
+            display: inline-block; 
+            font-family: "Comic Sans MS", 'Comic Sans', "Marker Felt";
+            cursor: pointer; 
+        }
+
+        .doge-face {
+            background-image: url('https://dl.dropboxusercontent.com/u/19492365/doge.png');
+            height: 80px; 
+            background-size: contain;
+            background-repeat: no-repeat; 
+            background-position: left center; 
+        }
+
+        .doge-button:hover .doge-txt{
+            transform: rotate(-10deg); 
+            color: yellow; 
+            text-shadow: 2px 2px 0 magenta; 
+        }
+
+        .doge-txt{
+            text-shadow: 0 0 0 #F0F;
+            font-weight: bold;
+            position: relative;
+            margin-left: 30px;
+            margin-bottom: 0px;
+            margin-top: -30px; 
+            font-size: 18px;
+            color: #F0F;
+            transition: transform 0.1s ease-in, color 0.1s ease-in, text-shadow 0.1s ease-in;
+            display: block;
+        }
+
+        .doge-button:hover:after{
+            content: "WOW,"; 
+            font-size: 18px;
+            display: block; 
+            position: absolute;
+            top: 15px; 
+            right: 0px; 
+        }
+    &lt;/style&gt; 
+
+    &lt;div class="doge-button"&gt;
+        &lt;div class="doge-face"&gt;&lt;/div&gt; 
+        &lt;div class="doge-txt"&gt;
+            &lt;content&gt;&lt;/content&gt;
+        &lt;/div&gt; 
+    &lt;/div&gt; 
+&lt;/template&gt;
+
+&lt;script&gt; 
+    var template = document.getElementById('soTemplate');
+    var muchPrototype = Object.create(HTMLElement.prototype);
+
+    muchPrototype.createdCallback = function() {
+      var root = this.createShadowRoot();
+      var clone = document.importNode(template.content, true);
+      root.appendChild(clone);  
+    }
+
+    document.registerElement('doge-button', {
+      prototype: muchPrototype
+    });
+&lt;/script&gt;
+
+&lt;doge-button&gt;so custom… much element!&lt;/doge-button&gt;</code></pre>
+<p data-height="148" data-theme-id="7625" data-slug-hash="GZKLNM" data-default-tab="result" data-user="j4n" class='codepen'>See the Pen <a href='http://codepen.io/j4n/pen/GZKLNM/'>GZKLNM</a> by Jan Drewniak (<a href='http://codepen.io/j4n'>@j4n</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+<p>Now, you can paste that into an HTML file (or codepen) and smoke it, or you can level up a bit and give your doge-button some extra buttony super powers. </p>
+<h2>6. Extending Existing Elements</h2>
+<p>At this point, out doge-button might look like a cool button, but it doesn't act like a button. We could potentially write a whole lot of javascript to make our doge-button act like a button, but why do that when we can just have it extend the <code>HTMLButtonElement</code>.  </p>
+<p>Extending a element requires making two changes to our code. First, instead of creating an object that inherits from <code>HTMLElement</code>, we make on that inherits from  the <code>HTMLButtonElement</code> prototype. </p>
+<pre><code class="language-js">var muchPrototype = Object.create(HTMLButtonElement.prototype);</code></pre>
+<p>Second, the process for registering an extended element with the DOM looks slightly different. We have to pass an additional <code>extends</code> property to the <code>registerElement()</code> function like this. </p>
+<pre><code class="language-js">document.registerElement('so-button', {
+  prototype: muchPrototype, 
+  extends: 'button'
+});</code></pre>
+<p>Once we do that, you'll notice the doge-button will look a bit different because it will also inherit all the default CSS styles of a <code>&lt;button&gt;</code> element. To remedy this ugliness, we can override the default button style using the <code>:host</code> CSS pseudo-selector. The following CSS should be enough to override the default button style.  </p>
+<pre><code class="language-css">    :host {
+      background-color: transparent; 
+      border: none;
+    }</code></pre>
+<p>With these modifications our doge-button will actually function like a normal button. We use it on our page a little differently though, instead of using the <code>&lt;doge-button&gt;</code> tag, we now have to use our doge-button using the <code>is</code> attribute on a <code>&lt;button&gt;</code> element, like so. </p>
+<pre><code class="language-html">&lt;button is="so-button"&gt;much button&lt;/button&gt;`</code></pre>
+<p>The final code for our super buttony doge-button looks like this: </p>
+<pre><code class="language-html">&lt;template id="soTemplate"&gt;
+  &lt;style&gt;
+    :host {
+      background-color: transparent; 
+      border: none;
+    }
+    .doge-button{
+      position: relative; 
+      display: inline-block; 
+      font-family: "Comic Sans MS", 'Comic Sans', "Marker Felt";
+      cursor: pointer; 
+    }
+
+    .doge-face {
+      background-image:   url('https://dl.dropboxusercontent.com/u/19492365/doge.png');
+      height: 80px; 
+      background-size: contain;
+      background-repeat: no-repeat; 
+      background-position: left center; 
+    }
+
+    .doge-button:hover .doge-txt{
+      transform: rotate(-10deg); 
+      color: yellow; 
+      text-shadow: 2px 2px 0 magenta; 
+    }
+
+    .doge-txt{
+text-shadow: 0 0 0 #F0F;
+  font-weight: bold;
+  position: relative;
+  margin-left: 30px;
+  margin-bottom: 0px;
+    margin-top: -30px; 
+  font-size: 18px;
+  color: #F0F;
+  transition: transform 0.1s ease-in, color 0.1s ease-in, text-shadow 0.1s ease-in;
+  display: block;
+    }
+
+    .doge-button:hover:after{
+      content: "WOW,"; 
+      font-size: 18px;
+      display: block; 
+      position: absolute;
+      top: 15px; 
+      right: 0px; 
+    }
+  &lt;/style&gt; 
+  &lt;div class="doge-button"&gt;
+  &lt;div class="doge-face"&gt;&lt;/div&gt; 
+  &lt;div class="doge-txt"&gt;
+    &lt;content&gt;&lt;/content&gt;
+  &lt;/div&gt; 
+&lt;/div&gt; 
+&lt;/template&gt;
+
+&lt;button is="so-button" type='submit' alert-text="such button!"&gt;so click&lt;/button&gt;
+
+&lt;button is="so-button" type='submit'&gt;much button&lt;/button&gt;
+
+&lt;script&gt; 
+var proto = Object.create(HTMLButtonElement.prototype);
+
+var template =  document.querySelector('#soTemplate'); 
+
+proto.createdCallback = function() {
+  var root = this.createShadowRoot();
+  var clone = document.importNode(template.content, true);
+  root.appendChild(clone); 
+}
+
+document.registerElement('so-button', {
+  prototype: proto, 
+  extends: 'button'
+});
+&lt;/script&gt;</code></pre>
+<p data-height="145" data-theme-id="7625" data-slug-hash="VeejQj" data-default-tab="result" data-user="j4n" class='codepen'>See the Pen <a href='http://codepen.io/j4n/pen/VeejQj/'>VeejQj</a> by Jan Drewniak (<a href='http://codepen.io/j4n'>@j4n</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="http://assets.codepen.io/assets/embed/ei.js"></script>
+<p>As you can see from this example, we've placed two doge-buttons on the page with different text. In the codepen embed, I've also added a event-listener on the custom button. See if you can spot how to do that ;).   </p>
+<h2>6. HTML Import-ing Our Custom Element</h2>
+<p>You probably don't want to copy and paste the code above every time you want to use your <code>&lt;doge-button&gt;</code> right? Luckily, this is where HTML Imports come into play. HTML imports are pretty straight forward. They make it easy to include an external HTML file into your main HTML file. The Javascript in the imported file executed as if it were on the main file, so all the code we've written so far will still work when called from the imported file. </p>
+<p>All we have to do to create an HTML is still all the code we've written so far into a separate HTML file, let's call it <code>doge-button.html</code>. We can then import it from any other HTML file with a simple <code>&lt;link&gt;</code> tag. </p>
+<pre><code class="language-html">&lt;head&gt;
+  &lt;link rel="import" href="/path/to/doge-button.html"&gt;
+&lt;/head&gt;</code></pre>
+<p>Now we can use our doge-button in any HTML document we want!</p>
+<h2>Epilogue</h2>
+<p>Congratulations on making your first Web Component. Your probably basking in a feeling of achievement, but then all of a sudden, reality sinks in. <a href="http://caniuse.com/#search=web%20components">The charts on caniuse.com</a> look bleak, and the road to production usage of web components is still years away. Web Components are the future, and although you can't use this stuff in production now, you can at least take comfort in knowing that when the Web Components future does arrive, you'll be ready (unless of course the specs change or something better comes along).</p>      
+      <time itemprop="datePublished" pubdate datetime="02/26/2016" title="Feb 26, 2016">published Feb 26, 2016</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

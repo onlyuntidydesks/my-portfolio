@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+<head>
+    <title>Portfolio</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="mainstyle.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.typekit.net/nzg7law.css">
+  <!--   <link href="https://fonts.googleapis.com/cs?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">-->
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--<script src="jquery.fancybox-1.3.4/jquery-1.4.3.min.js"></script>
+    <script src="jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+       <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+     <!--<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" src="libraries/p5.dom.js"></script>
+  <script language="javascript" src="libraries/p5.sound.js"></script>-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet"> 
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+     <script>
+         
+var font = 'serif';
+var letter = 'ACAB';
+function setup() {
+  createCanvas();
+canvas.parent('canvasForHTML');
+  background(255);
+  fill(0);
+
+  textFont(font);
+  textAlign(CENTER, CENTER);
+}
+
+function mouseMoved() {
+  clear();
+  textSize((mouseX - width / 2) * 5 + 1);
+  text(letter, width / 2, mouseY);
+}
+
+function mouseDragged() {
+  textSize((mouseX - width / 2) * 5 + 1);
+  text(letter, width / 2, mouseY);
+}
+
+function keyReleased() {
+  if (keyCode == CONTROL) saveCanvas(gd.timestamp(), 'png');
+}
+
+function keyTyped() {
+  letter = key;
+}
+
+    </script>
+        <script>
+        $("document").ready(
+     function(){
+    $( "#info1" ).draggable({ axis: "x" });
+    $( "#info2" ).draggable({ axis: "x" });
+    $( "#info3" ).draggable({ axis: "x" });
+   }
+            );
+  </script>
+</head>	
+<body>
+    <header >
+
+        <div id="wrap">
+        <nav id="nav">
+                <li><div id="info1" class="draggable"><a  href="#work">About</a></div></li>
+                <li><div id="info2" class="draggable"><a  href="#about">Work</a></div></li>
+                <li><div id="info3" class="draggable"><a  href="#contact">Contact</a></div></li>
+        </nav>
+        </div>
+       
+    </header>	
+<section id="home" class="gradient">    
+     <div id="name"> 
+            <a id="seb">Sebastian<br> Scholtze</a><br>
+            <a id="abme"><br>is a Graphicdesigner with an artistic approach Spezializing in drawing, large scale rubbish  </a>
+        </div>
+</section>
+
+    <section id="work">
+    <div class="wrapper">
+  <div id="one" class="container"> <img class="image" src="img/Fuchs.gif">
+        <div id="links" class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="two" class="container"> <img class="image" src="img/bild%204.jpg">
+        <div  class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="three" class="container"><img class="image" src="img/grafik/Scholtze_Sebastian_MD19_Plakat-1.jpg">
+        <div id="links" class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="four" class="container">
+      <img class="image" src="img/grafik/Scholtze_Sebastian_MD19_Plakat-2.jpg">
+        <div  class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="five" class="container"> <img class="image" src="img/Platzhalter.jpg">
+        <div id="links" class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="six" class="container"> <img class="image" src="img/Platzhalter.jpg">
+        <div class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+</div>
+            <section id="about" class="sig"> <div id="canvasForHTML">
+                <h1 id="titelabout">ABOUT</h1>
+				<p class="me" id="sig">
+                I’m not a musician. I hate cats. I don’t read books. I look at pictures. I hate crocs and scooters. I hate peas. I hate white wine. I hate wearing suits. I hate to close my shirts top button. 
+                I hate needles. I hate ball games. I hate driving cars. I hate sand between my teeth. I hate Karens. I hate nasty neighbours. I’m interested. I love spiders. I love my family. I love insects. I love water.
+                I love caffeine. I love snow. I love the 13. 12. I love to search for mushrooms. I love god. I love dripsticks. 
+                <a >read more</a>
+                </p>
+                </div>
+
+    <footer class="btn" id="contact">
+        <div class="scroll-left" id="scroll">
+<p><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br><a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+    <br> <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+        <br>    <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+     <br><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br>  <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+       <br>    <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+               <br>   <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+        <br>    <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+       <br>   <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  kbjkh<a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+    <br> <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br>  <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+        <br>   <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+   <br>  <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+         <br>   <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+         <br>  <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+                                               <br>  <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+            <br><a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+    <br> <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+            <br><a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+     <br><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br> <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+                                               <br>  <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br> <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br><a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+     <br><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+            <br><a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br><a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+    <br><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+            <br><a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br><a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+                                                 <br><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+            <br><a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+     <br><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+            <br><a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+     <br><a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br> <a id="kontakt">Kontakt</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> <a id="kontakt">Kontakt</a>
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+                                                                               
+
+            </p>
+</div>
+
+    </footer>
+                </section>
+         </section>
+
+</body>
+</html>

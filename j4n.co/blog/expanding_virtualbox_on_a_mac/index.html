@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | Expanding VirtualBox Hard Drives on a Mac</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="expanding_virtualbox_on_a_mac">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+</style>
+
+<a class='prevnext-nav prev' href='../intuitive/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../optimization-and-design/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">Expanding VirtualBox Hard Drives on a Mac</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>I do all my web-development through VirtualBox on my mac. This lets me run Ubuntu Server on my local machine and gets me a little closer to replicating a production server on my mac. <br />
+Occasionally though, the VirtualBox hard drive gets full and I need to expand it. This is how I do it. </p>
+<p><em>Disclaimer: back up your virtual machine before attempting this. Nothing bad should happen, but resizing partitions can (though usually doesn't) result in a lose of data.</em></p>
+<h2>Step 1</h2>
+<p>Open Terminal, it's in <code>/Applications/Utilities/Terminal.app </code> </p>
+<p>(or just type 'terminal' into Spotlight). </p>
+<h2>Step 2</h2>
+<p>Type the following command into terminal to navigate to your VirtualBox VMs folder. </p>
+<pre>
+cd ~/VirtualBox\ VMs/{your VM folder}
+</pre>
+<p>Replace {your VM folder} with the name of the folder containing the VirtualBox VDI file, in my case, this folder is called 'ubuntu'. </p>
+<h2>Step 3</h2>
+<p>Now we'll use the VirtualBox command line tool to resize the drive image. </p>
+<pre>
+VBoxManage modifyhd {yourVDIFile.vdi} --resize {new hd size}
+</pre>
+<p>Replace {yourVDIFile.vdi} with the name of the VDI file, and replace {new hd size} with the new hard drive size. </p>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/1.jpg" alt="1" /></figure>
+<p>This size is measured in megabytes, but the size you want in probably in gigabytes, so multiply the number of gigabytes you want by 1024, i.e. if you want 15gb, thats 15 * 1024. </p>
+<p>After hitting enter, you should see something like this, this is the computer telling you everything is going extremely well, <a href="http://www.youtube.com/watch?v=HwBmPiOmEGQ">Dave</a>. </p>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/2.jpg" alt="2" /></figure>
+<h2>Step 4</h2>
+<p>Now that we've resized the hard drive, we have to resize the partition. This is where GParted, a partition manager for linux, comes in real handy, so download the GParted Live CD <a href="http://gparted.org/download.php"> from here</a>. </p>
+<h2>Step 5</h2>
+<p>Mount GParted onto your VirtualBox image so that it boots up when you start your virtual machine.</p>
+<ol>
+<li>Open VirtualBox</li>
+<li>Right click on your virtual machine</li>
+<li>Click on Settings</li>
+<li>Click Storage</li>
+<li>Click the CD icon beside the IDE Controller. </li>
+<li>Select the GParted file we just download</li>
+</ol>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/3.jpg" alt="3" /></figure>
+<p>Now when you start the virtual machine, it will boot into GParted. GParted gives us some settings when it starts, but just clicking enter will give us the defaults. </p>
+<p>Once we have GParted up and running, resizing the partition is just a few clicks away. </p>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/4.jpg" alt="4" /></figure>
+<p>Select the main partition, and click <strong>resize/move</strong> . Drag the slider to fill the hard drive with all the available space. </p>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/5.jpg" alt="5" /></figure>
+<p>GParted warns us that this could potentially set our house of fire, but we click apply anyway. <em>BTW, if this warning freaks you out, back up your virtual machine folder</em>. </p>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/6.jpg" alt="6" /></figure>
+<p>But in the end everything works out just fine.</p>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/7.jpg" alt="7" /></figure>
+<p>Now it's safe to shutdown the virtual machine. <br />
+The only thing left to do is remove GParted from the virtual machine. We do this in the same way we added the image, except now we just right click 'Remove Attachment' and we're all done!</p>
+<figure><img src="../../content/4-blog/17-expanding_virtualbox_on_a_mac/8.jpg" alt="8" /></figure>      
+      <time itemprop="datePublished" pubdate datetime="01/28/2014" title="Jan 28, 2014">published Jan 28, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

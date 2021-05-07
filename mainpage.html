@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+    <title>Portfolio</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="mainstyle.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.typekit.net/nzg7law.css">
+  <!--   <link href="https://fonts.googleapis.com/cs?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">-->
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--<script src="jquery.fancybox-1.3.4/jquery-1.4.3.min.js"></script>
+    <script src="jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+       <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+     <!--<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" src="libraries/p5.dom.js"></script>
+  <script language="javascript" src="libraries/p5.sound.js"></script>-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet"> 
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="textfollowcuorsor.js" >
+       <!--<script>
+     window.addEventListener("load",function() {
+                                 const loader = document.querySelector(".load");
+                                loader.className= " hidden";
+                                 });
+    </script> -->
+    <script>
+var font = 'GlyphWorld Desert';
+var letter = 'Ahhhhahha';
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(255);
+  fill(0);
+
+  textFont(font);
+  textAlign(CENTER, CENTER);
+}
+
+function mouseMoved() {
+  clear();
+  textSize((mouseX - width / 2) * 5 + 1);
+  text(letter, width / 2, mouseY);
+}
+
+function mouseDragged() {
+  textSize((mouseX - width / 2) * 5 + 1);
+  text(letter, width / 2, mouseY);
+}
+
+function keyReleased() {
+  if (keyCode == CONTROL) saveCanvas(gd.timestamp(), 'png');
+}
+
+function keyTyped() {
+  letter = key;
+}
+
+    </script>
+        <script>
+        $("document").ready(
+     function(){
+    $( "#info1" ).draggable({ axis: "x" });
+    $( "#info2" ).draggable({ axis: "x" });
+    $( "#info3" ).draggable({ axis: "x" });
+   }
+            );
+  </script>
+    <script>
+function myFunction(x) {
+  if (x.matches) { // If media query matches
+      
+var x = window.matchMedia("(max-width: 700px)")
+myFunction(x) // Call listener function at run time
+x.addListener(function(){
+    $( "#info1" ).draggable({  });
+    $( "#info2" ).draggable({  });
+    $( "#info3" ).draggable({  });
+   }
+); 
+              }
+}
+// Attach listener function on state changes
+</script>
+</head>	
+<body>
+    <header >
+
+        <div id="wrap">
+            
+        <nav id="nav">
+                <li><div id="info1" class="draggable"><a class="navtxt" id="workd" href="#work">Work</a></div></li>
+                <li><div id="info2" class="draggable"><a class="navtxt" id="aboutd" href="#about">About</a></div></li>
+                <li><div id="info3" class="draggable"><a class="navtxt" id="conactd" href="#contact">Contact</a></div></li>
+        </nav>
+        </div>
+       
+    </header>	
+<section id="home" class="gradient">
+    <div class="loader hidden">
+   <!-- <img src="img/Fuchs.gif"/>-->
+     <div id="name"> 
+            <a id="seb">Sebastian<br> Scholtze</a><br>
+            <!--<a id="abme"> PORTFOLIO
+         </a>-->
+        </div>
+        </div>
+</section>
+
+    <section id="work">
+        <div >
+        <nav class="navwork">
+       <li><p class="workheadline">Work</p></li>
+        <li><a href="Illu.html">Illustration</a></li>
+        <li><a>Animation</a></li>
+        <li><a href="">Sketchbook</a></li>
+        <li><a>Archive</a></li>
+            </nav>
+            </div>
+    <div class="wrapper">
+  <div id="one" > 
+      <video controls loop>
+        <source src="img/das%20Werk.mp4" type="video/mp4">
+        <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+</video> 
+       
+        </div>
+  <div id="two" class="container"> <img class="image" src="img/bild%204.jpg">
+        <div  class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="three" class="container"><img class="image" src="img/grafik/Scholtze_Sebastian_MD19_Plakat-1.jpg">
+        <div id="links" class="overlay">
+    <div class="text">The sound of Salzburg<br>Poster<br>Frottage with coal on Paper</div>
+  </div>
+        </div>
+  <div id="four" class="container">
+      <img class="image" src="img/grafik/Scholtze_Sebastian_MD19_Plakat-2.jpg">
+        <div  class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="five" class="container"> <img class="image" src="img/plakat%20drawn%201.jpg">
+        <div id="links" class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+  <div id="six" class="container"> <img class="image" src="img/Platzhalter.jpg">
+        <div class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+        </div>
+</div>
+            <section id="about" class="sig"> <div id="canvasForHTML">
+                <p id="titelabout">ABOUT</p>
+				<p class="me" id="sig">
+                I’m not a musician. I hate cats. I don’t read books. I look at pictures. I hate crocs and scooters. I hate peas. I hate white wine. I hate wearing suits. I hate to close my shirts top button. 
+                I hate needles. I hate ball games. I hate driving cars. I hate sand between my teeth. I hate Karens. I hate nasty neighbours. I’m interested. I love spiders. I love my family. I love insects. I love water. I love caffeine. I love snow. I love the 13. 12. I love to search for mushrooms. I love god. I love dripsticks. 
+                <a href="About.html"  id="readm">read more</a>
+                </p>
+                </div>
+</section>
+    <footer class="btn" id="contact">
+        <div class="scroll-left" id="scroll">
+   <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> 
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+    <br>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+        <br>    
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> 
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+     <br>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+          <br> 
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+       <br>    
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+               <br>  
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+        <br>   
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a id="Instagram" href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+       <br>  
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+    <br> 
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+           <br>  
+ <a>Tel:0660/8577782</a>
+  <a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+        <br>  
+  <a>Tel:0660/8577782</a>
+    <a>Mail:sjscholtze@gmail.com</a>
+  <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+   <br>  <a id="kontakt">Kontakt</a>
+   <a>Tel:0660/8577782</a><a>Mail:sjscholtze@gmail.com</a>
+    <a href="https://www.instagram.com/scholtze_sebastian/?hl=en">Instagram</a>
+</div>
+
+    </footer>
+         </section>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+/* MediaQueris++++++++++++++++++++++++++++++++++++++++++++*/
+
+/* Tablet++++++++++++++++++++++++++++++++++++++++++++*/
+@media screen and (max-width: 1024px){
+    header {
+        height: auto;
+    }
+    .gradient {
+  width: 100%;
+    border-width: 5vh;
+  border-image: repeating-linear-gradient(45deg, blue, yellow, blue 20%) 45;
+}
+.gradient:hover {
+         width: 100%;
+    border-width: 5vh;
+  border-image: repeating-linear-gradient(66deg, yellow, blue, yellow 12%) 45;
+}
+/* header***************************************** */
+    #nav{
+        transform: rotate(45deg);
+     position: absolute;
+}
+    
+/* About***************************************** */
+    .me {
+    font-weight: 400;
+    font-family: 'Playfair Display', regular;
+    font-style: normal;
+     text-transform: uppercase;
+    color: white;
+    line-height: 0.9em;
+    font-size: 5em;
+}
+    #about{
+    padding-left: 5%;
+    padding-right: 5%;
+    border-style: solid;
+    border-width: 20%;
+    border-color: blue;
+    background-color: blue;
+}
+#about h1{
+    padding-top: 5%;
+    text-align: left;
+    font-family: 'Playfair Display', regular;
+    font-weight: 400;
+	font-size: 6em;
+    text-transform: uppercase;
+    color: white;
+    }
+/* footer++++++++++++++++++++++++++++++++++++++++++++*/
+.wrapper {
+    margin-top: 20%;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-bottom: 40%;
+  display: grid;
+  grid-template-columns: 1fr, 1fr;
+  grid-gap: 20%;
+  grid-auto-rows: minmax(auto, auto);
+}
+.container {
+    height: content;
+  position: relative;
+  width: 100%;
+}
+}
+
+
+
+
+
+
+
+
+
+
+/* Mobilephone++++++++++++++++++++++++++++++++++++++++++++*/
+@media screen and (max-width: 480px){
+    header { 
+        width: 100%;
+        height: auto;
+    }
+    section {
+        min-height: 100%;
+        min-width: 100%;
+    }
+/* header*****************************************  transform: rotate(90deg);*/
+     .gradient {
+  width: 100%;
+    border-width: 3vh;
+  border-image: repeating-linear-gradient(45deg, blue, yellow, blue 20%) 45;
+}
+.gradient:hover {
+         width: 100%;
+    border-width: 3vh;
+  border-image: repeating-linear-gradient(66deg, yellow, blue, yellow 12%) 45;
+}
+    #nav{
+transform: rotate(90deg);
+}
+#nav li div a{
+    clear: both;
+    list-style: none;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Playfair Display', regular;
+    color: white;
+    font-size: 3em;
+}
+    .draggable{
+        height: 10vh;
+    list-style: none;
+    }
+
+.draggable::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+#info1 {
+
+    padding: 0;
+    cursor: e-resize;
+}
+    #info2:hover {
+    cursor: e-resize;
+      border-radius: 10% 40% 10%;
+}
+#info2 {
+
+    padding: 0;
+    cursor: e-resize;
+}
+#info3 {
+ 
+    padding: 0;
+    cursor: e-resize;
+    }
+    /* Home***************************************** */
+#home{
+    border-style: solid;
+    border-color: blue;
+    background-image: url(img/hd_1.gif);
+    background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment:scroll;
+  background-size: cover;
+}
+#abme {
+    
+    font-family: 'Playfair Display', regular;
+    line-height: 0.3em;
+    margin-left: 3%;
+    margin-top: 3%;
+    font-size:1.5em;
+}
+#name {
+    max-width: 25%;
+    
+    float: right;
+    margin-top: 5%;
+    margin-right: 10%;
+}
+#seb {
+    font-family: GlyphWorld Desert;
+    line-height: 0.3em;
+    color: blue;
+    font-size: 3em;
+    font-style: bold;
+}
+
+/* About***************************************** */
+    .me {
+    font-weight: 400;
+    font-family: 'Playfair Display', regular;
+    font-style: normal;
+     text-transform: uppercase;
+    color: white;
+    line-height: 0.9em;
+    font-size: 3.2em;
+}
+    #about{
+    padding-left: 5%;
+    padding-right: 5%;
+    border-style: solid;
+    border-width: 20%;
+    border-color: blue;
+    background-color: blue;
+}
+#about h1{
+    padding-top: 5%;
+    text-align: left;
+    font-family: 'Playfair Display' ;
+    font-weight: 400;
+	font-size: 5em;
+    text-transform: uppercase;
+    color: white;
+    }
+/* work++++++++++++++++++++++++++++++++++++++++++++*/
+    .wrapper {
+    margin-top: 10%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 40%;
+        display: block;
+  grid-template-columns: none;
+  grid-auto-rows: minmax(auto, auto);
+}
+.container {
+height: content;
+  position: relative;
+  width: 100%;
+    margin-bottom: 10%;
+}
+  .container img{
+    height:auto;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: blue;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease-out;
+}
+
+.container:hover .overlay {
+  width: 50%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+ /* footer++++++++++++++++++++++++++++++++++++++++++++*/
+}

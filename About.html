@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+    <title>Portfolio</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="About.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.typekit.net/nzg7law.css">
+  <!--   <link href="https://fonts.googleapis.com/cs?family=Quicksand:wght@300;400&display=swap" rel="stylesheet">-->
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--<script src="jquery.fancybox-1.3.4/jquery-1.4.3.min.js"></script>
+    <script src="jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+       <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+     <!--<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+  <script language="javascript" src="libraries/p5.dom.js"></script>
+  <script language="javascript" src="libraries/p5.sound.js"></script>-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet"> 
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script>
+    $("document").ready(
+    function(){
+var msg = "sjscholtze@gmail.com";
+
+// Set font's style size for calculating dimensions
+// Set to number of desired pixels font size (decimal and negative numbers not allowed)
+var size = 50;
+
+// Set both to 1 for plain circle, set one of them to 2 for oval
+// Other numbers & decimals can have interesting effects, keep these low (0 to 3)
+var circleY = 2; var circleX =2;
+
+// The larger this divisor, the smaller the spaces between letters
+// (decimals allowed, not negative numbers)
+var letter_spacing = 4;
+
+// The larger this multiplier, the bigger the circle/oval
+// (decimals allowed, not negative numbers, some rounding is applied)
+var diameter = 12;
+
+// Rotation speed, set it negative if you want it to spin clockwise (decimals allowed)
+var rotation = 0;
+
+// This is not the rotation speed, its the reaction speed, keep low!
+// Set this to 1 or a decimal less than one (decimals allowed, not negative numbers)
+var speed = 0.4;
+
+////////////////////// Stop Editing //////////////////////
+
+if (!window.addEventListener && !window.attachEvent || !document.createElement) return;
+
+msg = msg.split('');
+var n = msg.length - 1, a = Math.round(size * diameter * 0.20), currStep = 20,
+
+ymouse = a * circleY + 20, xmouse = a * circleX + 20, y = [], x = [], Y = [], X = [],
+
+o = document.createElement('div'), oi = document.createElement('div'),
+
+b = document.compatMode && document.compatMode != "BackCompat"? document.documentElement : document.body,
+
+mouse = function(e){
+
+ e = e || window.event;
+ ymouse = !isNaN(e.pageY)? e.pageY : e.clientY; // y-position
+ xmouse = !isNaN(e.pageX)? e.pageX : e.clientX; // x-position
+
+},
+
+makecircle = function(){ // rotation/positioning
+
+ if(init.nopy){
+
+  o.style.top = (b || document.body).scrollTop + 'px';
+  o.style.left = (b || document.body).scrollLeft + 'px';
+
+ };
+
+ currStep -= rotation;
+
+ for (var d, i = n; i > -1; --i){ // makes the circle
+
+  d = document.getElementById('iemsg' + i).style;
+  d.top = Math.round(y[i] + a * Math.sin((currStep + i) / letter_spacing) * circleY - 15) + 'px';
+  d.left = Math.round(x[i] + a * Math.cos((currStep + i) / letter_spacing) * circleX) + 'px';
+
+ };
+
+},
+
+
+
+drag = function(){ // makes the resistance
+
+  y[0] = Y[0] += (ymouse - Y[0]) * speed;
+ x[0] = X[0] += (xmouse - 20 - X[0]) * speed;
+ for (var i = n; i > 0; --i){
+  y[i] = Y[i] += (y[i-1] - Y[i]) * speed;
+  x[i] = X[i] += (x[i-1] - X[i]) * speed;
+ };
+
+ makecircle();
+
+},
+
+
+
+init = function(){ // appends message divs, & sets initial values for positioning arrays
+
+ if(!isNaN(window.pageYOffset)){
+
+  ymouse += window.pageYOffset;
+  xmouse += window.pageXOffset;
+
+ } else init.nopy = true;
+
+ for (var d, i = n; i > -1; --i){
+
+  d = document.createElement('div'); d.id = 'iemsg' + i;
+  d.style.height = d.style.width = a + 'px';
+  d.appendChild(document.createTextNode(msg[i]));
+  oi.appendChild(d); y[i] = x[i] = Y[i] = X[i] = 0;
+
+ };
+
+ o.appendChild(oi); document.body.appendChild(o);
+
+ setInterval(drag, 25);
+
+},
+
+
+
+ascroll = function(){
+
+ ymouse += window.pageYOffset;
+ xmouse += window.pageXOffset;
+ window.removeEventListener('scroll', ascroll, false);
+
+};
+
+
+
+o.id = 'outerCircleText'; o.style.fontSize = size + 'px';
+
+
+
+if (window.addEventListener){
+
+ window.addEventListener('load', init, false);
+ document.addEventListener('mouseover', mouse, false);
+ document.addEventListener('mousemove', mouse, false);
+  if (/Apple/.test(navigator.vendor))
+   window.addEventListener('scroll', ascroll, false);
+
+}
+
+else if (window.attachEvent){
+
+ window.attachEvent('onload', init);
+ document.attachEvent('onmousemove', mouse);
+
+};
+
+
+
+})();
+   </script>
+</head>	
+<body class="gradient">
+    <section>
+    <nav>
+        <ul>
+            <li><a id="name" href="mainpage.html">Sebastian<br>Scholtze</a></li>
+           <li><a href="Worksingle.html" id="about">Work</a></li>
+            <li><a href="Illu.html" id="work">Illustration</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+  <div class="row">
+    <div class="col">
+   <a class="headline">About</a>
+        <br><br>
+        <p class="leben">
+            sjscholtze@gmail.com<br>
+            Instagram @scholtze_sebastian<br>
+            <br>
+            is a Graphicdesigner with an artistic approach and spezializing in illustration and animation.
+        </p>
+        
+    </div>
+    <div class="col">
+        <p>
+      <a class="headline">Education</a>
+<br><br>
+    <p class="leben">
+2019–now<br>
+Salzburg University of Applied Sciences MultiMediaArt<br>
+Mediadesign<br>
+Salzburg<br>
+<br><br>
+2018-2019<br>
+community service at:<br>
+Laube sozial-psychiatrische Aktivitäten GmbH
+<br><br>
+2017<br>
+Scolarship at International Summeracademy of Fine Arts<br>
+Course by Till Megerle:<br>High/Low: Figuratives Zeichnen Heute
+<br><br>
+2013–2018<br>
+College:<br>
+HTBLuVA Salzburg:<br>
+        Graphic- and Communication Design<br>
+    </p>
+      </div>
+      
+    <div class="col">
+        <p class="headline" id="yell">Experience </p>
+        <p class="leben" id="yell2">
+            2021<br>
+Spatial Illustration by Julio Rölle<br> and Sebastian Bagge (44flavours)<br><br>
+            2016-2017<br>
+HTL Theaterwerkgruppe.<br>
+Prof. Dr. Gottfried Goiginger, Walter Anichhofer.<br>
+Nominatet for Papageno Award; best suporting cast.
+            <br><br>
+            
+      2016<br>
+Internship at Studio Hungry<br>
+Internship at the local carpenter Höllwart Meisterbetriebe
+            <br><br>
+          2015<br>
+Internship at Bastarts<br>
+Internship at Qadratliter
+          </p>
+         
+    </div>
+  </div>
+</div>
+        </section>
+</body>
+</html>

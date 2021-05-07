@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | Custom Sketch Artboard Presets</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="custom-sketch-art-board-presets">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+img{
+margin: 0.5em;
+vertical-align: middle; 
+}</style>
+
+<a class='prevnext-nav prev' href='../open-heart-doxie-surgery/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../intuitive/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">Custom Sketch Artboard Presets</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>I love <a href="http://bohemiancoding.com/sketch/">Sketch</a>. It's my web-design tool of choice, great for creating mockups, prototypes, icons etc. When creating artboards in Sketch, you can choose from a set of -- in my opinion, very apple-centric -- presets. Here I'll show you how to create your own artboard presets. </p>
+<h2>The Easy Way</h2>
+<p>Clicking the artboard icon <figure><img src="../../content/4-blog/15-custom-sketch-art-board-presets/artboard24.png" alt="artboard24" height="17px" /></figure> in Sketch reveals the artboard presets. </p>
+<div style="float:right;">
+<figure>
+<figure class="right"><img src="../../content/4-blog/15-custom-sketch-art-board-presets/artboard-resizing.png" alt="artboard-resizing" width="160px" /></figure>
+<figcaption>resizing the artboard</figcaption>
+</figure>
+</div> 
+<p>You can create a new artboard by simply dragging a rectangle onto the canvas. You can resize the artboard by editing the dimensions in the right sidebar. </p>
+<div style="float:left;">
+<figure>
+<figure class="left"><img src="../../content/4-blog/15-custom-sketch-art-board-presets/artboard-renaming.png" alt="artboard-renaming" width="120px" /></figure>
+<figcaption>renaming the artboard</figcaption>
+</figure> 
+</div> 
+<p>You can rename the artboard by double clicking the name in the left sidebar.</p>
+<p>Once you've resized and renamed the artboard, click the plus button near the artboard presets, this will add the current artboard to your presets. </p>
+<figure><img src="../../content/4-blog/15-custom-sketch-art-board-presets/artboard-presets.png" alt="artboard-presets" height="25px" /></figure>
+<p>This is well and good if you just want to add one or two artboard presets, but what if you want to add a bunch of them, and with with a fancy drop-down menu like the one beside 'Icons' and 'iOS Screens'? </p>
+<p>For that, we need to take a dive into the plists. </p>
+<h2>The Hard Way</h2>
+<p>Sketch actually keeps these artboard presets in an artboards.sketchpreset file located somewhere on your mac. If you're using the App Store version of Sketch, then the file is located here: </p>
+<pre><code>~/Library/Containers/com.bohemiancoding.sketch/Data/Library/Application  Support/sketch/</code></pre>
+<p>Press command+G in the finder and paste in the above line to go to that folder. <br />
+In this folder, there's the artboards.sketchpreset file. We can open it in a text editor like <a href="http://sublimetext.com">Sublime Text</a>. </p>
+<p>The file is an xml document with the artboard presets. We can see that each preset has a name, height and width associated with it. </p>
+<p>I'm going to add some presets for some old-fashioned desktop displays. The resolutions will be 640x480, 800x600, 1024x768 and 1280x1024. All we have to do is add the following code right before the ending <code markdown=0></array\> </plist\></code> tags. </p>
+<pre><code>&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Desktop&lt;/string&gt;
+    &lt;key&gt;presets&lt;/key&gt;
+    &lt;array&gt;
+        &lt;dict&gt;
+            &lt;key&gt;name&lt;/key&gt;
+            &lt;string&gt;tiny (640x480)&lt;/string&gt;
+            &lt;key&gt;height&lt;/key&gt;
+            &lt;integer&gt;480&lt;/integer&gt;
+            &lt;key&gt;width&lt;/key&gt;
+            &lt;integer&gt;640&lt;/integer&gt;
+        &lt;/dict&gt;
+        &lt;dict&gt;
+            &lt;key&gt;name&lt;/key&gt;
+            &lt;string&gt;Small (800x600)&lt;/string&gt;
+            &lt;key&gt;height&lt;/key&gt;
+            &lt;integer&gt;600&lt;/integer&gt;
+            &lt;key&gt;width&lt;/key&gt;
+            &lt;integer&gt;800&lt;/integer&gt;
+        &lt;/dict&gt;
+        &lt;dict&gt;
+            &lt;key&gt;name&lt;/key&gt;
+            &lt;string&gt;Medium (1024x768)&lt;/string&gt;
+            &lt;key&gt;height&lt;/key&gt;
+            &lt;integer&gt;768&lt;/integer&gt;
+            &lt;key&gt;width&lt;/key&gt;
+            &lt;integer&gt;1024&lt;/integer&gt;
+        &lt;/dict&gt;
+        &lt;dict&gt;
+            &lt;key&gt;name&lt;/key&gt;
+            &lt;string&gt;Large (1280x1024)&lt;/string&gt;
+            &lt;key&gt;height&lt;/key&gt;
+            &lt;integer&gt;1024&lt;/integer&gt;
+            &lt;key&gt;width&lt;/key&gt;
+            &lt;integer&gt;1280&lt;/integer&gt;
+        &lt;/dict&gt;
+    &lt;/array&gt;
+&lt;/dict&gt;</code></pre>
+<p>And Voila, we've created our custom artboard presets. </p>
+<figure><img src="../../content/4-blog/15-custom-sketch-art-board-presets/custom-artboards.png" alt="custom-artboards" height="120px" /></figure>      
+      <time itemprop="datePublished" pubdate datetime="02/27/2014" title="Feb 27, 2014">published Feb 27, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

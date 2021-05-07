@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | Schema.org 101 - The Basics</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="schema-org-101-the-basics">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+.max-width-image{
+  max-width: 600px; 
+  width: 100%; 
+  display: block; 
+  margin: 2em auto; 
+}
+
+pre, pre code{
+  background-color: transparent; 
+}
+
+pre code br{
+  display: none;  
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  background-color: #FFF;
+  background-position: center;
+  background-size: auto;
+  opacity: .5;
+  background-position: center center;
+  background-repeat: no-repeat;
+}</style>
+
+<a class='prevnext-nav prev' href='../schema-org-intro-to-structured-data/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../open-heart-doxie-surgery/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+   
+    <div class="overlay" style="background-image: url('../../content/4-blog/13-schema-org-101-the-basics/header.png');"></div> 
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">Schema.org 101 - The Basics</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>The purpose of this post is to teach you how to read the documentation on schema.org. After reading this post I hope you'll be able to look at a page like <a href="http://schema.org/Person">schema.org/Person</a> and instantly understand how to implement this microformat. </p>
+<h2>A Quick Intro To Schema.org</h2>
+<p>The purpose of schema.org is to make your HTML more meaningful. HTML already has lots of semantic tags like <code markdown=0>&lt;address&gt;</code> or <code markdown=0>&lt;figure&gt;</code>, but schema.org takes this to a whole new level. It lets you specify things like <a href="http://schema.org/Person">Person</a>, <a href="http://schema.org/Movie">Movie</a>, <a href="http://schema.org/Product">Product</a>, <a href="http://schema.org/Restaurant">Restaurant</a>, even drill down into specifics like <a href="http://schema.org/FastFoodRestaurant">FastFoodRestaurant</a> right down to the type of <a href="http://schema.org/servesCuisine">cuisine</a> it serves. </p>
+<p>The point of adding all these semantics is not just to appease folks with OCD, it's to make finding and organizing things on the internet easier. Right now, Google has to parse the text and HTML content of your website to guess what it's about. If a website uses something like schema.org, it can tell google 'Hey, I'm a website about an indian restaurant' instead of Google having to come up with that conclusion on it's own. </p>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/with-without-schema-org.jpg" alt="your site with and without schema.org" /></figure>
+<p>This is why microdata like schema.org is highly valued by search engines like Google. In fact, you're probably reading this just because you want your webpage to show up with the fancy rich snippets in Google's search results. This rich snippet is Google rewarding you for making their job easier. </p>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/google-rich-snippets.jpg" alt="google rich snippets" /></figure>
+<p>If you want to learn how to implement these Google specific rich snippets, then head over to the <a href="https://support.google.com/webmasters/answer/99170">Google Rich Snippet documentation</a>. If however, you want to gain an understanding of how this stuff actually works, then keep reading. </p>
+<h2>It's all about the items</h2>
+<p>The schema.org microdata is all about <em>items</em>. Schema.org has hundreds of different items like <code>Person</code>, <code>Restaurant</code>, <code>Movie</code>, <code>Actor</code>, etc.  An item is like a container. A container that contains more information about itself. </p>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/schema-org-itemscope.jpg" alt="schema.org basic itemscope and itemtype" /></figure>
+<p>We can create an item by simply sticking an <code>itemscope</code> and <code>itemtype</code> attribute onto an HTML element. Adding the <code>itemscope</code> attribute to an element makes everything inside the element be <em>about</em> that  item. </p>
+<p>We also have to specify what type of item we're talking about. We do that by adding the <code>itemtype</code> attribute to the tag. The <code>itemtype</code> attribute needs a URL that points to the schema.org page of the item we want to talk about. So If we want to create a Person item, we simply create a div with the attributes <code>itemscope</code> and <code>itemtype="schema.org/Person"</code> like this:</p>
+<pre><code class="language-html">&lt;div itemscope itemtype="schema.org/Person"&gt;
+    ...Everything inside me is about a person...
+&lt;/div&gt;</code></pre>
+<p>Now, everything inside that div will be about a <code>Person</code> item. </p>
+<h2>itemProps, bro</h2>
+<p>Once we've created an item, i.e. an element with the <code>itemscope</code> and <code>itemtype</code> attributes, we can go ahead and fill it up with stuff. What kind of stuff you ask? properties, item properties.  All the possible properties of an item are listed on the itemtype pages, like <a href="http://schema.org/Person">schema.org/Person</a>. </p>
+<p>However, the implementation of these properties is where the schema.org documentation is less than entirely helpful.  </p>
+<p>Let's go to <a href="http://schema.org/Person"><a href="http://schema.org/Person">http://schema.org/Person</a></a> for example. As of this writing the page looks something like the image below. </p>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/screenshot.png" alt="a screenshot of schema.org webpage" /></figure>
+<p>It's basically a table with three columns, 'Property' 'Expected Type' and 'Description'. </p>
+<p>The property column lists all the properties our item can have.  For example, if we want to give our Person a name, we can use the 'name' property. We can also use the 'additionalName', 'familyName' or 'givenName' properties if we so choose. As long as it's on the list, our Person can have it. </p>
+<p>Where things get tricky is that second column, "Expected Type".  </p>
+<p>If the Expected Type is Text, URL or Date, then things are simple. If it's anything other than that, then things get complicated. In this article I'll be covering the first three datatypes, the remaining Expected Types will be covered in part 2 of this article, where we'll talk about nested items.</p>
+<h2>Expected Types: URLs, Text &amp; Date.</h2>
+<p>To give our item some properties, like a name or a phone number, all we have to do is add the <code>itemprop</code> attribute to any HTML element inside our item. </p>
+<p>The value of the <code>itemprop=""</code> attribute, (that is, the thing that goes inside the quotes) is the name of the property. So if we want to give our Person a phone number, we just add <code>itemprop="telephone"</code> to any HTML element inside our item. </p>
+<h3>Expected Type: Text</h3>
+<p>If the 'Expected Type' of the property is Text, then the property's value is just the text inside the HTML element, so in the example below, the person's phone number is "+1 (647) 111-0000".</p>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/schema-org-expected-type-text.jpg" alt="schema.org expected type text" /></figure>
+<pre><code class="language-html">&lt;span itemprop="telephone"&gt; +1 (647) 111-0000 &lt;/span&gt; </code></pre>
+<h3>Expected Type: URL</h3>
+<p>If the 'Expected Type' of the property is a URL, then the value of that property is either going to be the <code>src</code> or <code>href</code> attribute of that HTML element. This pretty much means that if the Expected Type is URL, then the HTML element that it has to be attached to is either an image or anchor tag.</p>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/schema-org-expected-type-url.jpg" alt="schema.org expected type url" /></figure>
+<pre><code class="language-html">&lt;a itemprop="url" href="example.com"&gt;
+    Hey there, this is my cool website! 
+&lt;/a&gt;
+&lt;img itemprop="image" src="image.jpg" /&gt;</code></pre>
+<h3>Expected Type: Date</h3>
+<p>If the 'Expected Type' of the property is Date, it's best to attach the attribute to an HTML5 <code>&lt;time></code> element. That let's us put the computer-readable <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> formatted time into the element's <code>datetime</code> attribute, while letting us format the text content of the element in a human readable way. Example:   </p>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/schema-org-expected-type-date.jpg" alt="schema.org expected type date" /></figure>
+<pre><code class="language-html">&lt;time itemprop="birthdate" datetime="1972-07-18"&gt; 
+    The Eighteen of July, Nineteen Seventy Two 
+&lt;time&gt; </code></pre>
+<h2>Putting It All Together</h2>
+<figure class="max-width-image"><img src="../../content/4-blog/13-schema-org-101-the-basics/schema-org-basic-properties.jpg" alt="schema.org basic expected types" /></figure>
+<pre><code class="language-html">&lt;div itemscope itemtype="schema.org/Person"&gt;
+    &lt;span itemprop="name"&gt;Chester Barnes&lt;/span&gt;
+    &lt;span itemprop="telephone"&gt; +1 (647) 111-0000 &lt;/span&gt;
+    &lt;time itemprop="birthdate" datetime="1972-07-18"&gt; 
+        The Eighteen of July, Nineteen Seventy Two 
+    &lt;time&gt;    
+    &lt;a itemprop="url" href="example.com"&gt;
+        Hey there, this is my cool website!
+    &lt;/a&gt;
+    &lt;img itemprop="image" src="image.jpg" /&gt;
+&lt;/div&gt;</code></pre>
+<p>If you've come this far than you've covered the basics. you can get pretty far with the schema.org microdata just using the Text, URL and Date values in your markup. This however, just scratches the surface of what we can do with schema.org. In Part 2 of this series, we'll cover more advanced topics like nesting items, linking multiple items on a page, and using meta and link tags to specify property content. </p>
+<p>So in the mean time, check out the <a href="http://www.google.com/webmasters/tools/richsnippets">Google Rich Snippet Testing Tool</a> part of the Google Webmaster Tools suite. It let's you test your structured markup and shows you if you're schema.org markup is valid. If you don't believe me, try pasting in the code snippet above.</p>      
+      <time itemprop="datePublished" pubdate datetime="04/15/2014" title="Apr 15, 2014">published Apr 15, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

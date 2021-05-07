@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | A Justified CSS Grid Layout</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="grid-layout-with-text-justify">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+</style>
+
+<a class='prevnext-nav prev' href='../the-bains-of-inline-block/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../Creating-your-own-css-grid-system/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">A Justified CSS Grid Layout</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>CSS Layouts are hard. Emerging standards like flexbox make them easier, but what if you need something that works in older browsers, Like IE8? This question led me to a pretty novel idea.</p>
+<h2>The Problem</h2>
+<p style="text-align:center;">
+<figure class="max-width-image"><img src="../../content/4-blog/9-grid-layout-with-text-justify/justified-layout.png" alt="justified-layout" /></figure>
+</p>
+<p>This is the layout I wanted to create. It's a simple grid with three items per row. Notice the kicker here, the first and last item in the row touches the very edge of the container.</p>
+<h2>The Options</h2>
+<p><strong>1. Conditional Classes</strong> - Use the CMS to add a 'first-item' class to the first item and every subsequent 4th item. Also, add a 'last-item' class to every 3rd item to make the first and third items touch the boundaries of the container. This method relies on the CMS, which I didn't want to do, and it also doesn't work for responsive breakpoints. </p>
+<p><strong>2. nth-child()</strong>: Target every third item with the CSS nth-child selector. This is clean approach, and it's the one that Bootstrap uses. Unfortunately, IE8 doesn't support nth-child :( </p>
+<p><strong>3. negative margins</strong>: Add a wrapper around the items and give it a negative margin that offsets the margins of it's child items. This approach certainly works, but I've never been good at calculating negative margins, especially with flexible layouts. </p>
+<p><strong>4. flexbox</strong>: Sure, if IE anything support isn't an issue then go nuts. Unfortunately, given the IE8 requirement, flexbox is not an option. </p>
+<h2>The Solution</h2>
+<p>When you think about it, the desired effect is similar to justified text, where the words of a block of text are spaced to the edges of their container. In this case though, each word would be the same width, so in theory, the space between each word should be identical. </p>
+<p data-height="268" data-theme-id="0" data-slug-hash="FJils" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/j4n/pen/FJils/'>CSS Grid layout with text-align:justify</a> by Jan Drewniak (<a href='http://codepen.io/j4n'>@j4n</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="http://codepen.io/assets/embed/ei.js"></script>
+<h3>The miracle of inline-block</h3>
+<p>Using inline-block, we can get our items to behave like words. </p>
+<p>Using the little known 'text-align:justify' property, we can get our items to touch the edges of their container. If we make the items wide enough to only fit three items per line, then we get our desired effect. </p>
+<p data-height="404" data-theme-id="0" data-slug-hash="LBKif" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/j4n/pen/LBKif/'>CSS Grid layout with text-align:justify</a> by Jan Drewniak (<a href='http://codepen.io/j4n'>@j4n</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="http://codepen.io/assets/embed/ei.js"></script>
+<p>The only thing we have to watch out for is that last line. Justified text doesn't space the last line to the edge of the container. To remedy this, we can add another inline-block with a 100% width after our items, using the CSS ':after' pseudo-selector. Which by the way, is fully supported in IE8.</p>      
+      <time itemprop="datePublished" pubdate datetime="07/23/2014" title="Jul 23, 2014">published Jul 23, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

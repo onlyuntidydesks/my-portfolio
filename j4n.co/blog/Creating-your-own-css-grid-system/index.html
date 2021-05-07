@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | Creating Your Own CSS Grid System</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="Creating-your-own-css-grid-system">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+.grid-container{
+	width: 100%; 
+	max-width: 1200px;  	
+}
+
+/*-- our cleafix hack -- */ 
+.row:before, 
+.row:after {
+	content:"";
+  	display: table ;
+	clear:both;
+}
+	
+[class*='col-'] {
+	float: left; 
+	min-height: 1px; 
+	width: 16.66%; 
+	/*-- our gutter -- */
+	padding: 12px; 
+	background-color: #FFDCDC;
+}
+
+.col-1{ width: 16.66%; }
+.col-2{ width: 33.33%; }
+.col-3{ width: 50%;    }
+.col-4{ width: 66.66%; }
+.col-5{ width: 83.33%; }
+.col-6{ width: 100%;   }
+	
+.outline, .outline *{
+	outline: 1px solid #F6A1A1; 
+}
+
+
+@media all and (max-width:800px){
+	.col-1{ width: 33.33%;	}
+	.col-2{ width: 50%;		}
+	.col-3{ width: 100%;	}
+	.col-4{ width: 100%;	}
+	.col-5{ width: 100%;	}
+	.col-6{ width: 100%;  	}
+
+	.row .col-2:last-of-type{
+		width: 100%; 
+	}
+	
+	.row .col-5 ~ .col-1{
+		width: 100%; 
+	}
+
+}
+
+@media all and (max-width:650px){
+	.col-1{ width: 50%;		}
+	.col-2{ width: 100%;	}
+	.col-3{ width: 100%;	}
+	.col-4{ width: 100%;	}
+	.col-5{ width: 100%;	}
+	.col-6{ width: 100%;  	}
+
+}
+
+/*-- some extra column content styling --*/
+[class*='col-'] > p {
+ background-color: #FFC2C2; 
+ padding: 0;
+ margin: 0;
+ text-align: center; 
+ color: white; 
+}</style>
+
+<a class='prevnext-nav prev' href='../grid-layout-with-text-justify/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../the-importance-of-perceived-speed/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+   
+    <div class="overlay" style="background-image: url('../../content/4-blog/10-Creating-your-own-css-grid-system/header.jpg');"></div> 
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">Creating Your Own CSS Grid System</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>CSS Grids have been around a long time. Often they come bundled in frameworks such as Bootstrap. I'm not a Bootstrap hater, but sometimes using a framework is overkill if all you really need is a grid. Here's how to make your own CSS Grids from scratch. </p>
+<h2>The elements of a CSS Grid</h2>
+<p style="text-align:center;">
+<figure><img src="../../content/4-blog/10-Creating-your-own-css-grid-system/grid-elements.png" alt="grid-elements" /></figure>
+</p>
+<p>As we can see, the basic grid contains just a few elements. </p>
+<ul>
+<li>a container </li>
+<li>rows</li>
+<li>columns</li>
+<li>gutters (the space between columns)</li>
+</ul>
+<h2>The Container</h2>
+<p style="text-align:center;">
+<figure><img src="../../content/4-blog/10-Creating-your-own-css-grid-system/container.png" alt="container" /></figure>
+</p>
+<p>The purpose of the container is to set the width of the entire grid. The width of the container is generally 100%, but you might want to set a max-width for larger displays. </p>
+<pre><code class="language-css">    .grid-container {
+        width : 100%;
+        max-width : 1200px; 
+    }</code></pre>
+<h2>The Row</h2>
+<p style="text-align:center;">
+<figure><img src="../../content/4-blog/10-Creating-your-own-css-grid-system/row.png" alt="row" /></figure>
+</p>
+<p>The purpose of the row element is to keep the columns inside it from overflowing onto other rows. To achieve this, we'll use the clearfix hack to make sure everything inside the row stays inside the row.   </p>
+<pre><code class="language-css">    /*-- our cleafix hack -- */ 
+    .row:before, 
+    .row:after {
+        content:"";
+        display: table ;
+         clear:both;
+    }</code></pre>
+<h2>The Column</h2>
+<p style="text-align:center;">
+<figure><img src="../../content/4-blog/10-Creating-your-own-css-grid-system/column.png" alt="column" /></figure>
+</p>
+<p>The column is definitely the most complicated part of the grid. First off, there are several different ways of positioning columns in CSS, then there are various widths to consider, as well as factors like responsive design. In this tutorial we'll be positioning the columns and giving them widths. I'll leave the responsive bit for next time. </p>
+<h2>Column Positioning</h2>
+<p>Floats, inline-blocks, display-table, display-flex. These are all different ways of positioning columns in CSS. From my personal experience, the least error prone and most widely used of these methods is the 'float' method. If our columns are empty however, our floated columns will stack on top of each other. To prevent this, we'll give our columns a min-height of 1px as well as float them. </p>
+<pre><code class="language-css">    [class*='col-'] {
+        float: left;
+        min-height: 1px; 
+    }</code></pre>
+<h2>Column Widths</h2>
+<p>To find the width of one column, all we have to do is divide the total number of columns by the width of the container. In our case, the width of the container is 100%, and we want 6 columns, so 100/6 = 16.66, so our base column width is 16.66%. </p>
+<pre><code class="language-css">    [class*='col-'] {
+        float: left;
+        min-height: 1px; 
+        width: 16.66%; 
+    }</code></pre>
+<p>This of course, is just the beginning. If we want a section that's 2 columns wide, we have to create an 2-column-wide column. The calculations are pretty simple. </p>
+<pre><code class="language-css">    .col-1{
+        width: 16.66%; 
+    }
+    .col-2{
+        width: 33.33%; 
+    }
+    .col-3{
+        width: 50%; 
+    }
+    .col-4{
+        width: 66.664%;
+    }
+    .col-5{
+        width: 83.33%;
+    }
+    .col-6{
+        width: 100%;
+    }</code></pre>
+<p>The only thing we have consider when using these column combinations is that the total number of columns in a row adds up to 6 (or whatever the total number of columns is). </p>
+<h2>Column Gutters</h2>
+<p style="text-align:center;">
+<figure><img src="../../content/4-blog/10-Creating-your-own-css-grid-system/column-gutters.png" alt="column-gutters" /></figure>
+</p>
+<p>Before the 'border-box' box-sizing model, giving percentage-width elements a static padding was a real pain. Luckily, using the 'border-box' model, we can create gutters with ease. </p>
+<pre><code class="language-css">    /*-- setting border box on all elements inside the grid --*/
+    .grid-container *{
+        box-sizing: border-box; 
+    }
+
+    [class*='col-'] {
+        float: left;
+        min-height: 1px; 
+        width: 16.66%; 
+        /*-- our gutter --*/
+        padding: 12px;
+    }</code></pre>
+<p>(Personally, I use <code>* {box-sizing: border-box;}</code> in my CSS to apply border-box to everything on the page). </p>
+<h2>Our basic Grid is ready:</h2>
+<pre><code class="language-markup">&lt;div class="grid-container outline"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+    &lt;div class="row"&gt;
+        &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+    &lt;div class="row"&gt;
+        &lt;div class="col-3"&gt;&lt;p&gt;col-3&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-3"&gt;&lt;p&gt;col-3&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+&lt;/div&gt;</code></pre>
+<p>The entire HTML &amp; CSS needed to create the above grid: </p>
+<h3>CSS</h3>
+<pre><code class="language-css">    .grid-container{
+        width: 100%; 
+        max-width: 1200px;      
+    }
+
+    /*-- our cleafix hack -- */ 
+    .row:before, 
+    .row:after {
+        content:"";
+          display: table ;
+        clear:both;
+    }
+
+    [class*='col-'] {
+        float: left; 
+        min-height: 1px; 
+        width: 16.66%; 
+        /*-- our gutter -- */
+        padding: 12px; 
+        background-color: #FFDCDC;
+    }
+
+    .col-1{ width: 16.66%; }
+    .col-2{ width: 33.33%; }
+    .col-3{ width: 50%;    }
+    .col-4{ width: 66.66%; }
+    .col-5{ width: 83.33%; }
+    .col-6{ width: 100%;   }
+
+    .outline, .outline *{
+        outline: 1px solid #F6A1A1; 
+    }
+
+    /*-- some extra column content styling --*/
+    [class*='col-'] &gt; p {
+     background-color: #FFC2C2; 
+     padding: 0;
+     margin: 0;
+     text-align: center; 
+     color: white; 
+    }</code></pre>
+<h3>HTML</h3>
+<pre><code class="language-markup">    &lt;div class="grid-container outline"&gt;
+        &lt;div class="row"&gt;
+            &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;/div&gt; 
+        &lt;div class="row"&gt;
+            &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+        &lt;/div&gt; 
+        &lt;div class="row"&gt;
+            &lt;div class="col-3"&gt;&lt;p&gt;col-3&lt;/p&gt;&lt;/div&gt; 
+            &lt;div class="col-3"&gt;&lt;p&gt;col-3&lt;/p&gt;&lt;/div&gt; 
+        &lt;/div&gt; 
+    &lt;/div&gt;
+
+&lt;hr/&gt;</code></pre>
+<h1>Part 2: Making Our Grid Responsive</h1>
+<p>Adjusting our grid for mobile layouts is pretty easy. All we have to do is adjust the widths of the columns. </p>
+<p>For simplicities sake, I'm going to double the widths of the columns for screens under 800px. </p>
+<p>The only thing to watch out for is a few exceptions where the last column in the row hangs off the end. Such as in the case of the <code>.col-2</code> columns and the <code>.col-1</code> beside the <code>.col-5</code> column. <br />
+To counter this, we'll make the last <code>.col-2</code> and <code>.col-1</code> in the row 100% wide. </p>
+<pre><code class="language-css">    @media all and (max-width:800px){
+        .col-1{ width: 33.33%;    }
+        .col-2{ width: 50%;        }
+        .col-3{ width: 83.33%;    }
+        .col-4{ width: 100%;    }
+        .col-5{ width: 100%;    }
+        .col-6{ width: 100%;      }
+
+        .row .col-2:last-of-type{
+            width: 100%; 
+        }
+
+        .row .col-5 ~ .col-1{
+            width: 100%; 
+        }
+    }</code></pre>
+<p>For screens that are even smaller than 800px, we'll make all the columns except the very smallest 100%. </p>
+<pre><code class="language-css">    @media all and (max-width:650px){
+        .col-1{ width: 50%;        }
+        .col-2{ width: 100%;    }
+        .col-3{ width: 100%;    }
+        .col-4{ width: 100%;    }
+        .col-5{ width: 100%;    }
+        .col-6{ width: 100%;      }
+    }</code></pre>
+<p>And that's all there is too it. We've now created our very own responsive grid system, without using a framework. </p>
+<pre><code class="language-markup">&lt;div class="grid-container outline"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+    &lt;div class="row"&gt;
+        &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+    &lt;div class="row"&gt;
+        &lt;div class="col-3"&gt;&lt;p&gt;col-3&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-3"&gt;&lt;p&gt;col-3&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+    &lt;div class="row"&gt;
+        &lt;div class="col-4"&gt;&lt;p&gt;col-4&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-2"&gt;&lt;p&gt;col-2&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+    &lt;div class="row"&gt;
+        &lt;div class="col-5"&gt;&lt;p&gt;col-5&lt;/p&gt;&lt;/div&gt; 
+        &lt;div class="col-1"&gt;&lt;p&gt;col-1&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+    &lt;div class="row"&gt;
+        &lt;div class="col-6"&gt;&lt;p&gt;col-6&lt;/p&gt;&lt;/div&gt; 
+    &lt;/div&gt; 
+&lt;/div&gt;</code></pre>
+<p>Be warned though, that this guide is just a starting point for creating your own system. It is not a framwork or even a complete solution, but I hope it does demystify the process of creating a CSS grid a bit.</p>      
+      <time itemprop="datePublished" pubdate datetime="06/11/2014" title="Jun 11, 2014">published Jun 11, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

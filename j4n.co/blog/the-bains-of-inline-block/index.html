@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | A Justified CSS Grid Revisited: The Bane of inline-block.</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="the-bains-of-inline-block">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+blockquote{
+	font-size: 1.2em; 
+	padding-left: 4em; 
+	padding-right: 4em; 
+	font-style: italic; 
+	line-height: 1.2em; 
+}</style>
+
+<a class='prevnext-nav prev' href='../reverse-polish-notation-for-checklists/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../grid-layout-with-text-justify/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">A Justified CSS Grid Revisited: The Bane of inline-block.</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p><a href="../grid-layout-with-text-justify/index.html">Last week</a> I discovered a pretty novel way of created a CSS grid layout. <br />
+After living with this layout for a week, I revisit some of the pitfalls it has caused. </p>
+<h2>The Bane of inline-block</h2>
+<p>The pitfalls of using inline-block for layout have been well documented over the years, however it seems I'm slow to learn. So just as a reminder to myself, I'm going to go over the reasons why using inline-block for layout is a bad idea and should be avoided. </p>
+<h3>The 4px of Pain</h3>
+<p>This issue is the first argument against using inline-block for layout. Two inline-blocks placed beside each other don't touch edge to edge. This is because the inline-blocks are treated as <strong>words</strong>, and words, as well as letters, have spaces between each other. </p>
+<p data-height="163" data-theme-id="7625" data-slug-hash="EhoGm" data-default-tab="result" class='codepen'></p> 
+<p>Because of this issue, if we set each block to <code>width: 25%;</code>, they wrap to the next line, like this: </p>
+<p data-height="268" data-theme-id="7625" data-slug-hash="Agnxw" data-default-tab="result" class='codepen'></p> 
+<p>This issue can be alleviated by setting <code>word-spacing: -4px;</code> like so: </p>
+<p data-height="150" data-theme-id="7625" data-slug-hash="Bruvx" data-default-tab="result" class='codepen'></p>
+<p>Problem solved right? Wrong. </p>
+<p>That <code>word-spacing</code> property is dependent on the font your using. Watch what happens when we set 'Helvetica' as the font-family of our body: </p>
+<p data-height="150" data-theme-id="7625" data-slug-hash="nhvGp" data-default-tab="result" class='codepen'></p> 
+<p>Our boxes are broken again. </p>
+<blockquote>
+<p>This is because <strong>every single font has it's own word spacing and letter spacing</strong>, and it's not necessarily 4px. </p>
+</blockquote>
+<p>This reason alone should be reason enough to stay away from inline-block for layout purposes, but there is one more reason. </p>
+<h3>At The Mercy of White Space</h3>
+<p>Inline-blocks depend on white space to separate elements. Just as words are separated by spaces, so are inline-blocks. The pitfalls of this are not obvious at first, so let's take a look at what happens when we remove the whitespace between our inline-blocks (click on 'result' to see the difference). </p>
+<p data-height="451" data-theme-id="7625" data-slug-hash="gtBhi" data-default-tab="html" class='codepen'></p>
+<p>Our layout becomes totally broken. Now you might be thinking, "In that case, I'll just add white space to my HTML and problem solved". Not quite. </p>
+<p>Even if you add white-space to your HTML, it will be removed in a few important circumstances:</p>
+<ol>
+<li>
+<p><strong>Your Minifying your HTML</strong> - If you minify your HTML in your build or deploy process, all the white-space will be removed, potentially breaking your layout. </p>
+</li>
+<li><strong>Your manipulate the DOM in any way</strong> - If you touch the DOM in any way, for example to AJAX in content, that content will be inserted without white-space. This can be a big issue in applications where there is a lot of dynamic content. The following jQuery code for example, will append 2 inline-block elements, but will do so without the whitespace between them: </li>
+</ol>
+<pre><code>
+$('&lt;div class="inline-block"&gt;&lt;/div&gt; &lt;div class="inline-block"&gt;&lt;/div&gt;').appendTo('body');
+</code></pre>
+<p>This second reason can be a real pain to solve if your application depends heavily on dynamic content, or if you're using libraries that do a lot of DOM manipulation, such as Angular, it could be almost impossible to solve. </p>
+<h2>In Conclusion</h2>
+<p>Inline-block for layout... just don't do it.</p>      
+      <time itemprop="datePublished" pubdate datetime="08/01/2014" title="Aug 01, 2014">published Aug 01, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  <script async src="http://codepen.io/assets/embed/ei.js"></script>
+
+</body>
+
+</html>
+
+<!-- Localized -->

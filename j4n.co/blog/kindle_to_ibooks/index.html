@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <title>Jan Drewniak | From Kindle to Calibre to iBooks</title>
+  <meta name="description" content="UX Design and Developement">
+  <meta name="keywords" content="jan drewniak design user interface ui ux deveopement">
+
+  <link rel="stylesheet" href="../../assets/css/all.min.css" />  
+</head>
+<body class="kindle_to_ibooks">
+	
+<nav class="site-nav"> 
+  <a href="../../index.html#home"> home</a> 
+  <a href="../../index.html#portfolio">work</a>
+  <a href="../../index.html#lab">lab</a>
+  <a href="../index.html">blog</a>
+</nav> 
+
+
+    
+    
+
+<style>
+</style>
+
+<a class='prevnext-nav prev' href='../optimization-and-design/index.html'>&lt;</a>
+
+<a class='prevnext-nav next' href='../nvalt-middleman-ftw/index.html'>&gt;</a>
+
+<header class="container--header post--header">
+    <div class="block--headlines">
+    <h1 class="headline overlay-shadow">From Kindle to Calibre to iBooks</h1>
+  </div>
+</header>
+
+<main class='main'>
+
+  <article class="post-section container--below-fixed" itemscope itemtype="http://schema.org/BlogPosting">
+    <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+      <polygon points="50,0 0,50 50,50" fill="inherit" />
+    </svg>     
+  
+
+    <div class="row post">
+      <p>epubs and mobis and azws oh my!</p>
+<p>Let's face it, the Kindle For Mac app is horrible. It's not optimized for retina displays, and hasn't been <a href="http://www.amazon.com/gp/help/customer/forums/kindleqna/ref=cm_cd_pg_pg4?ie=UTF8&cdForum=Fx1GLDPZMNR1X53&cdPage=4&cdThread=Tx21CPVYII8PIYM">for over a year</a>, making it essentially useless on my retina macbook pro. Also, you cannot <em>copy and paste</em> from it. However, like many people, I own a kindle, and so that's what I'm stuck with. </p>
+<p>iBooks for Mac on the other hand, is a much better reading experience, and it supports copy and<br />
+paste.</p>
+<p>So today's mission is to get books <em>from</em> the Kindle for Mac app <em>into</em> iBooks <em>through</em> Calibre. The following workflow is not as automated as I'd like it to be, but it's good enough for now: </p>
+<ol>
+<li>We locate the folder that the Kindle For Mac app uses to store downloaded books. </li>
+<li>We use Automator to automatically copy those books into another folder.*</li>
+<li>We setup Calibre to automatically add the books from the copied folder and convert them to ePubs. </li>
+<li>We drag the files from Calibre into iBooks (this is the manual labour). </li>
+</ol>
+<p>*The reason for step 2 -- copying the books into another folder with automator -- is that Calibre deletes items from the source folder after it automatically adds them to the Calibre library. The reason for this behaviour is outlined <a href="http://www.mobileread.com/forums/showthread.php?t=199242">here</a>. </p>
+<h2>Step 1: Locate the Kindle Data Folder</h2>
+<p>It's here:<br />
+<code style="max-width:100%;word-break:break-word;">~/Library/Containers/com.amazon.Kindle/Data/Library/Application Support/Kindle/My Kindle Content/<br />
+</code><br />
+You can easily go to this folder by pressing Command+Shift+G in the Finder, then copying and pasting the above path into the textfield and pressing 'Go'. </p>
+<p>You should see a bunch of .azw and .apnx  files. These are your kindle books. </p>
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/kindle_folder.jpg" alt="kindle_folder" /></figure>
+<h2>Step 2: Setup Automator to Automatically Copy the Kindle Books</h2>
+<p>This is really easy. Some other tutorials use a third-party app for this, but automator is perfect for the job.  </p>
+<ul>
+<li>Open Automator. </li>
+<li>Select ' Folder Action'.<figure><img src="../../content/4-blog/19-kindle_to_ibooks/automator_folder_action_1.jpg" alt="automator_folder_action_1" /></figure> </li>
+<li>Where it says 'Choose folder', select the folder with the Kindle books. Again, an easy way to go the this folder is Command+Shift+G <figure><img src="../../content/4-blog/19-kindle_to_ibooks/automator_folder_action_2.jpg" alt="automator_folder_action_2" /></figure></li>
+<li>Select 'Copy Finder Items' as the folder action. You can set the destination folder to whatever and wherever you want. Mine is called 'Kindle 4 Mac Items' and is located in my Documents folder.
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/automator_folder_action_4.jpg" alt="automator_folder_action_4" /></figure></li>
+</ul>
+<p>There we go. Now, whenever you double click on a book in the Kindle for Mac app, the app downloads the book into the Kindle content folder, and Automator automatically copies the book into a different folder. </p>
+<h2>Step 3: Calibre, Taming the Beast</h2>
+<p>First, download <a href="http://calibre-ebook.com">Calibre</a>. Then clean up the cruddy Calibre interface a bit. </p>
+<p>Bad</p>
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_1.jpg" alt="prettying_up_calibre_1" /></figure>
+<p>Less bad </p>
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_7.jpg" alt="prettying_up_calibre_7" /></figure>
+<p>Follow the steps in the gallery below to go from bad to less bad. </p>
+<div class='gallery items-6'>
+<div id="item-2" class="control-operator" ></div>
+<div id="item-3" class="control-operator" ></div>
+<div id="item-4" class="control-operator" ></div>
+<div id="item-5" class="control-operator" ></div>
+<div id="item-6" class="control-operator" ></div>
+<div id="item-7" class="control-operator" ></div>
+<figure class="item">
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_1.jpg" alt="prettying_up_calibre_1" /></figure>
+</figure>
+<figure class="item">
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_2.jpg" alt="prettying_up_calibre_2" /></figure>
+</figure>
+<figure class="item">
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_3.jpg" alt="prettying_up_calibre_3" /></figure>
+</figure>
+<figure class="item">
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_4.jpg" alt="prettying_up_calibre_4" /></figure>
+</figure>
+<figure class="item">
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_5.jpg" alt="prettying_up_calibre_5" /></figure>
+</figure>
+<figure class="item">
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_6.jpg" alt="prettying_up_calibre_6" /></figure>
+</figure>
+<figure class="item">
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/prettying_up_calibre_7.jpg" alt="prettying_up_calibre_7" /></figure>
+</figure>
+<div class="controls">
+<a class="control-button" href="#item-2"> </a>
+<a class="control-button" href="#item-3"> </a>
+<a class="control-button" href="#item-4"> </a>
+<a class="control-button" href="#item-5"> </a>
+<a class="control-button" href="#item-6"> </a>
+<a class="control-button" href="#item-7"> </a>
+</div>
+</div>
+<h2>Step 4: DeDRMing Kindle books with Calibre</h2>
+<p>Now we get down to business. Download the <a href="https://apprenticealf.wordpress.com/">DeDRM plugin for Calibre</a> and follow the instructions to get it installed. The plugin will automatically strip DRM from Kindle books when they are added to Calibre.  </p>
+<h2>Step 5: Automatically adding books into Calibre</h2>
+<p>First we need to set the preferred output format in Calibre, then we need to set up the automatic adding. </p>
+<p>To set the preferred output format. From the top menu, we go to:</p>
+<p>Calibre → Preferences → Behavior</p>
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/calibre_automatic_adding_1.jpg" alt="calibre_automatic_adding_1" /></figure> 
+<p>And there we select EPUB as the preferred output format. </p>
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/calibre_default_output_format.jpg" alt="calibre_default_output_format" /></figure>
+<p>Now for the automatic adding. From the top menu, we go to:</p>
+<p>Calibre → Preferences → Adding Books → Automatic Adding</p>
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/calibre_automatic_adding_2.jpg" alt="calibre_automatic_adding_2" /></figure> 
+<p>From here, we select the folder that we copied the kindle books into with Automator.  My folder is named "Kindle 4 Mac Items". <strong>It's important that 'automatically convert added files to the current output format' is checked</strong>. We click apply. </p>
+<p>Now after we hit apply, Calibre will automatically add the kindle books, strip the DRM off them, and convert them to ePubs. Not bad. </p>
+<h2>Step 6: Getting from Calibre to iBooks</h2>
+<p>Unfortunately, I was unable to get the books from Calibre to iBooks automatically, so I just drag them into iBooks from Calibre. There's a thread on this topic <a href="http://www.mobileread.com/forums/showthread.php?t=225516">here</a>, but that workflow didn't worked for me, so I'm sticking to dragging for now. </p>
+<p>But hey, the books convert nicely from Kindle to ePub, along with images and table of contents and all that jazz. </p>
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/ibooks_2.jpg" alt="ibooks_2" /></figure> 
+<figure><img src="../../content/4-blog/19-kindle_to_ibooks/ibooks_1.jpg" alt="ibooks_1" /></figure>      
+      <time itemprop="datePublished" pubdate datetime="01/02/2014" title="Jan 02, 2014">published Jan 02, 2014</time>
+
+    </div>
+  </article>
+</main>
+
+
+<script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+
+  <footer class="site-footer cf" role="contentinfo">
+  
+  <svg class="svg-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="none">
+  	<polygon points="0,50 50,50 0,0" fill="inherit" />
+  </svg>
+
+    <a class="icon--social twitter" target="_BLANK" href="https://twitter.com/j4n_co">
+      twitter
+    </a>
+    <a class="icon--social linkedin" target="_BLANK" href="http://ca.linkedin.com/in/jandrewniak">
+        linkedin
+    </a>
+    <a class="icon--social codepen" target="_BLANK" href="http://codepen.io/j4n">
+        codepen
+    </a>
+
+  <script type="text/javascript" language="javascript">
+  <!-- // Generated by http://rumkin.com/tools/mailto_encoder
+  ML="wadb:rl<"+"\"c=eo@sm-pfuh jgk>in.t/";
+  MI="71E961>>:83CMM<"+"K@@6<"+"KGE9<"+"KM;KM@051AA;5@@K155<"+"08ED5;B:8?1J6M<"+"4F1KL25;0KJ1H=G?1J6L9<"+"?8IEG;MEJKEM<"+"C9DE7N1IE";
+  OT="";
+  for(j=0;j<MI.length;j++){
+  OT+=ML.charAt(MI.charCodeAt(j)-48);
+  }document.write(OT);
+  // --></script>
+  
+  <nav class="footer-nav">
+    <a href="../../index.html">home</a>
+    <a href="../../portfolio/index.html">work</a>
+    <a href="../../lab/index.html">lab</a>
+    <a href="../index.html">blog</a>
+  </nav>
+
+	<small class="text-center">
+		© Jan Drewniak 2015  &middot;  Built with <a href="http://getkirby.com">Kirby CMS</a>  &middot;  Hosted on <a href="https://www.webfaction.com/?aid=21613">Webfaction</a>  &middot;  Set in Avenir & Glypha
+	</small>
+
+
+  </footer>
+
+  <script src="../../assets/js/all.min.js"></script>  
+  
+  
+
+</body>
+
+</html>
+
+<!-- Localized -->

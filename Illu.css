@@ -1,0 +1,82 @@
+body,html { 
+     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+section {
+min-width: 100%;
+    height: auto;
+}
+#slide2{
+    display: grid;
+}
+#slide1{
+    display: grid;
+}
+.mySlides {
+    display:none;
+}
+.mySlides2 {
+    display:none;
+}
+#one {
+min-width: 33.3%;
+}
+img {
+    max-width: 1000px;
+min-height: auto;
+  
+}
+#two {
+min-width: 33.3%;
+}
+.8card__image{
+    
+}
+.container {
+    position: relative;
+    flex-direction: row;
+    display: grid; /* or inline-flex */
+    min-width: 100%;
+    min-height: 80%;
+}
+.realnav{
+    text-decoration: none;
+    list-style: none;
+      margin-top: 1%;
+    margin-right: 2.5%;
+    text-align: right;
+    float: right;
+}
+#about {
+     font-weight: 900;
+      font-family: 'Playfair Display', regular;
+    font-size: 3em;
+    color: yellow;
+}
+#work {
+     font-weight: 900;
+      font-family: 'Playfair Display', regular;
+    font-size: 3em;
+    color: yellow;
+}
+#worknav{
+    text-decoration: none;
+    list-style: none;
+}
+#name {
+      font-family: 'Playfair Display', regular;
+    font-weight: 900;
+     font-size: 3em;
+    line-height: 0.9em;
+    color: yellow;
+}
+.mySlides{
+    width:100%;
+}
+.col-sm-8 {
+    border-style: solid;
+    border-bottom-width: medium;
+    border-color: blue  ;
+}
